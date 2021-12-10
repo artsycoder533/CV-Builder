@@ -6,7 +6,7 @@ export const StyledFooter = styled.footer`
   justify-content: center;
   gap: 8rem;
   padding: 2rem;
-  height: 120px;
+  /* height: 120px; */
   position: fixed;
   bottom: 0;
   width: 100%;

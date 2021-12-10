@@ -33,3 +33,5 @@ const Footer = (props) => {
     </StyledFooter>
   );
 };
+
+export default Footer;
