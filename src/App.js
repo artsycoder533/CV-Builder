@@ -53,22 +53,18 @@ function App() {
 
   const nextView = (e) => {
     e.preventDefault();
-    // const copyOfState = { ...this.state };
-    // copyOfState.view++;
-    // this.setState(copyOfState);
+    setView(view + 1);
   };
 
   const prevView = (e) => {
     e.preventDefault();
-    // const copyOfState = { ...this.state };
-    // copyOfState.view--;
-    // this.setState(copyOfState);
+    setView(view - 1);
   };
 
   return (
     <section className="App">
       <Header view={view} />
-      <ProgressBar/>
+      <ProgressBar view={view}/>
       <article>
         {view === 0 ? (
           <h1>General Form</h1>
