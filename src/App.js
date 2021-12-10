@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import Header from "./components/Header/Header";
 
+
 function App() {
   //state variables
   const [general, setGeneral] = useState({
@@ -44,7 +45,8 @@ function App() {
   
   return (
     <section className="App">
-      <Header view={view}/>
+      <Header view={view} />
+     
     </section>
   );
 }
