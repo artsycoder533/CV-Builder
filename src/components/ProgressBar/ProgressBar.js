@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Container, Step, StyledFiCheck, StyledStatus, Circle } from "./style";
+import uniqid from 'uniqid';
 
 const ProgressBar = (props) => {
     const [pages, setPages] = useState(["General", "Education", "Experience", "Skills"]);
@@ -8,7 +9,7 @@ const ProgressBar = (props) => {
       <Container>
         {pages.map((page, index) => {
           return (
-            <Step>
+            <Step key={uniqid()}>
               {/* if view is equal to index add active class*/}
               {view >= index + 1 ? (
                 <Circle current>
