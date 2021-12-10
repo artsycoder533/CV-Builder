@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DisplayInput from "../DisplayInput/DisplayInput";
 import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
-import DisplayTextarea from "../DisplayTextArea/DisplayTextarea";
+import DisplayTextarea from "../DisplayTextArea/DisplayTextArea";
 import uniqid from "uniqid";
 import { StyledFormWithScroll } from "../Form/style";
 import {
@@ -14,12 +14,23 @@ import { StyledTitle } from "../Title/style";
 import { StyledAddIcon } from "../EducationInfo/style";
 
 const ExperienceInfoForm = (props) => {
+
     const handleInput = (e, index) => {
-        
+        const copyOfState = [...experience];
+        let entry = copyOfState[index];
+        const name = e.currentTarget.name;
+        const value = e.currentTarget.value;
+        const type = e.currentTarget.type;
+        type === "checkbox"
+          ? (entry[name] = e.currentTarget.checked)
+            : (entry[name] = value);
+        props.setExperience(copyOfState);
     }
 
     const deleteEntry = (index) => {
-        
+        const copyOfState = [...experience];
+        copyOfState.splice(index, 1);
+        props.setExperience(copyOfState);
     }
 
     const addNewEntry = () => {
@@ -36,7 +47,7 @@ const ExperienceInfoForm = (props) => {
         props.setExperience(copyOfState);
     }
 
-    const { experience, setExperience } = props;
+    const { experience} = props;
     return (
       <Container>
         <StyledTitle>Experience</StyledTitle>
@@ -137,3 +148,5 @@ const ExperienceInfoForm = (props) => {
       </Container>
     );
 }
+
+export default ExperienceInfoForm;

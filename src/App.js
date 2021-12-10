@@ -7,6 +7,8 @@ import ProgressBar from "./components/ProgressBar/ProgressBar";
 import CV from "./components/CV/CV";
 import GeneralInfoForm from "./components/GeneralInfo/GeneralInfoForm";
 import EducationInfoForm from "./components/EducationInfo/EducationInfoForm";
+import ExperienceInfoForm from "./components/ExperienceInfo/ExperienceInfoForm";
+import SkillsInfoForm from "./components/SkillsInfo/SkillsInfoForm";
 
 function App() {
   //state variables
@@ -45,7 +47,7 @@ function App() {
       id: uniqid(),
     },
   ]);
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState([""]);
   const [view, setView] = useState(0);
 
   //functions
@@ -75,9 +77,9 @@ function App() {
         ) : view === 1 ? (
             <div><EducationInfoForm education={education} setEducation={setEducation}/></div>
         ) : view === 2 ? (
-          <div>Experience</div>
+              <div><ExperienceInfoForm experience={experience} setExperience={setExperience}/></div>
         ) : view === 3 ? (
-          <div>Skills</div>
+                <div><SkillsInfoForm skills={skills} setSkills={setSkills}/></div>
         ) : (
           <div>
             <CV
