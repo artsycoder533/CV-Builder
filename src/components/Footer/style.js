@@ -9,6 +9,7 @@ export const StyledFooter = styled.footer`
   /* height: 120px; */
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   z-index: 1;
   background: white;

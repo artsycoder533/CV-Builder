@@ -142,3 +142,4 @@ const CV = (props) => {
     </Container>
   );
 };
+export default CV;

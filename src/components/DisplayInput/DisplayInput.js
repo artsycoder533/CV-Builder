@@ -2,12 +2,12 @@ import React from "react";
 import { StyledInput, StyledLabel, Container } from "./style";
 
 const DisplayInput = (props) => {
-    const { name, label, index, value, type, placeholder, id } = props;
+    const { name, label, index, value, type, placeholder, id, handleInput } = props;
   return (
     <Container>
-      <StyledLabel htmlFor={this.props.name}>{label}: </StyledLabel>
+      <StyledLabel htmlFor={name}>{label}: </StyledLabel>
       <StyledInput
-        onChange={(e) => this.props.handleInput(e, index)}
+        onChange={(e) => handleInput(e, index)}
         name={name}
         value={value}
         type={type}

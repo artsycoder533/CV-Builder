@@ -4,6 +4,8 @@ import uniqid from "uniqid";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
+import CV from "./components/CV/CV";
+import GeneralInfoForm from "./components/GeneralInfo/GeneralInfoForm";
 
 function App() {
   //state variables
@@ -14,6 +16,7 @@ function App() {
     portfolio: "",
     linkedIn: "",
     github: "",
+    id: uniqid()
   });
   const [education, setEducation] = useState([
     {
@@ -64,10 +67,10 @@ function App() {
   return (
     <section className="App">
       <Header view={view} />
-      <ProgressBar view={view}/>
+      <ProgressBar view={view} />
       <article>
         {view === 0 ? (
-          <h1>General Form</h1>
+          <GeneralInfoForm general={general} setGeneral={setGeneral}/>
         ) : view === 1 ? (
           <div>Education Info</div>
         ) : view === 2 ? (
@@ -75,11 +78,17 @@ function App() {
         ) : view === 3 ? (
           <div>Skills</div>
         ) : (
-          <div>CV</div>
+          <div>
+            <CV
+              general={general}
+              education={education}
+              experience={experience}
+              skills={skills}
+            />
+          </div>
         )}
       </article>
       <Footer
-        className="hide"
         prevView={prevView}
         nextView={nextView}
         view={view}
