@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
 
 function App() {
   //state variables
@@ -67,6 +68,7 @@ function App() {
   return (
     <section className="App">
       <Header view={view} />
+      <ProgressBar/>
       <article>
         {view === 0 ? (
           <h1>General Form</h1>

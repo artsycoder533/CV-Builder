@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Container, Step, StyledFiCheck, StyledStatus, Circle } from "./styles";
+import { Container, Step, StyledFiCheck, StyledStatus, Circle } from "./style";
 
 const ProgressBar = (props) => {
     const [pages, setPages] = useState(["General", "Education", "Experience", "Skills"]);
