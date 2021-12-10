@@ -44,29 +44,42 @@ function App() {
   const [view, setView] = useState(0);
 
   //functions
-    const generateCV = () => {
-      // const copyOfState = { ...this.state };
-      // copyOfState.view++;
-      // this.setState(copyOfState);
-    };
+  const generateCV = () => {
+    // const copyOfState = { ...this.state };
+    // copyOfState.view++;
+    // this.setState(copyOfState);
+  };
 
-    const nextView = (e) => {
-      e.preventDefault();
-      // const copyOfState = { ...this.state };
-      // copyOfState.view++;
-      // this.setState(copyOfState);
-    };
+  const nextView = (e) => {
+    e.preventDefault();
+    // const copyOfState = { ...this.state };
+    // copyOfState.view++;
+    // this.setState(copyOfState);
+  };
 
-    const prevView = (e) => {
-      e.preventDefault();
-      // const copyOfState = { ...this.state };
-      // copyOfState.view--;
-      // this.setState(copyOfState);
-    };
-  
+  const prevView = (e) => {
+    e.preventDefault();
+    // const copyOfState = { ...this.state };
+    // copyOfState.view--;
+    // this.setState(copyOfState);
+  };
+
   return (
     <section className="App">
       <Header view={view} />
+      <article>
+        {view === 0 ? (
+          <h1>General Form</h1>
+        ) : view === 1 ? (
+          <div>Education Info</div>
+        ) : view === 2 ? (
+          <div>Experience</div>
+        ) : view === 3 ? (
+          <div>Skills</div>
+        ) : (
+          <div>CV</div>
+        )}
+      </article>
       <Footer
         className="hide"
         prevView={prevView}
