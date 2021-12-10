@@ -46,16 +46,31 @@ const EducationInfoForm = (props) => {
       ? (entry[name] = e.currentTarget.checked)
       : (entry[name] = value);
     props.setEducation([...copyOfEducation]);
-    //setEducation({ ...education, [name]: value });
   };
 
   const deleteEntry = (index) => {
-    const copyOfState = props.education;
+    const copyOfState = [...props.education];
     copyOfState.splice(index, 1);
     props.setEducation(copyOfState);
   };
 
-    const addNewEntry = () => { };
+    const addNewEntry = () => {
+        const copyOfState = [...props.education];
+        copyOfState.push({
+          school: "",
+          major: "",
+          startDate: "",
+          endDate: "",
+          gpa: "",
+          minor: "",
+          attending: "",
+          graduate: "",
+          degree: "",
+          designation: "",
+          id: uniqid(),
+        });
+        props.setEducation(copyOfState);
+    };
     
     const { education } = props;
     return (
