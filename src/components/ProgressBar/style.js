@@ -7,11 +7,13 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 1rem;
-  height: 100px;
+  height: 80px;
   position: fixed;
   /* position: relative; */
   top: 75px;
+  left: 0;
   background: white;
+  border: 2px solid red;
 
   @media print {
     display: none;
@@ -20,8 +22,8 @@ export const Container = styled.div`
 
 export const Circle = styled.div`
   border: 2px solid blue;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 50%;
