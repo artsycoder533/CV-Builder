@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { StyledRadio, Container } from "./style";
+import uniqid from 'uniqid';
 
 const DisplayRadio = (props) => {
     const [values, setValues] = useState(["Yes", "No"]);
@@ -10,7 +11,7 @@ const DisplayRadio = (props) => {
       <span>Did you graduate?</span>
           {values.map((val) => {
         return (
-          <div>
+          <div key={uniqid()}>
             <StyledRadio
               type="radio"
               name={name}

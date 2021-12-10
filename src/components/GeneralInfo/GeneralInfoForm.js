@@ -27,7 +27,8 @@ const GeneralInfoForm = (props) => {
           linkedIn: "",
           github: "",
           id: uniqid(),
-        };
+      };
+      setGeneral(reset);
     }
     
     const { general, setGeneral } = props;

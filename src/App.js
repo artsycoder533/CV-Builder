@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import CV from "./components/CV/CV";
 import GeneralInfoForm from "./components/GeneralInfo/GeneralInfoForm";
+import EducationInfoForm from "./components/EducationInfo/EducationInfoForm";
 
 function App() {
   //state variables
@@ -72,7 +73,7 @@ function App() {
         {view === 0 ? (
           <GeneralInfoForm general={general} setGeneral={setGeneral}/>
         ) : view === 1 ? (
-          <div>Education Info</div>
+            <div><EducationInfoForm education={education} setEducation={setEducation}/></div>
         ) : view === 2 ? (
           <div>Experience</div>
         ) : view === 3 ? (
