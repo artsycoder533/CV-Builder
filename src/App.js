@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
+import Header from "./components/Header/Header";
 
 function App() {
   //state variables
@@ -41,7 +42,11 @@ function App() {
   const [skills, setSkills] = useState([]);
   const [view, setView] = useState(0);
   
-  return <div className="App"></div>;
+  return (
+    <section className="App">
+      <Header view={view}/>
+    </section>
+  );
 }
 
 export default App;
