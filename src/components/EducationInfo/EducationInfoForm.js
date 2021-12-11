@@ -16,6 +16,7 @@ import {
   EntryWrapper,
   StyledAddIcon,
   FormWrapper,
+  StyledWrapper,
 } from "./style";
 import { EducationForm, StyledForm, StyledFormWithScroll } from "../Form/style";
 import { StyledTitle } from "../Title/style";
@@ -190,8 +191,7 @@ const EducationInfoForm = (props) => {
                 {graduate === "No" ? (
                   ""
                 ) : (
-                  <React.Fragment>
-                    <div>
+                  <StyledWrapper>
                       <DisplaySelect
                         label={"Degree"}
                         value={degree}
@@ -201,8 +201,7 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
-                    </div>
-                    <div>
+                 
                       <DisplaySelect
                         label={"Designation"}
                         value={designation}
@@ -212,8 +211,8 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
-                    </div>
-                  </React.Fragment>
+                    
+                  </StyledWrapper>
                 )}
 
                 {index === 0 ? (

@@ -15,8 +15,7 @@ export const StyledFormWithScroll = styled.form`
   width: 100%;
   display: grid;
   gap: 2rem;
-  /* border: 2px solid orange; */
-  padding: 3rem;
+  /* padding: 2rem; */
   overflow-y: scroll;
   height: calc(100vh - 120px - 175px - 121px);
   position: fixed;
@@ -24,9 +23,9 @@ export const StyledFormWithScroll = styled.form`
   top: 295px;
   max-width: 1400px;
   width: 90vw;
-  padding: 1rem 0;
+ 
 
   @media screen and (min-width: 992px) {
-    padding: 3rem;
+    /* padding: 3rem; */
   }
 `;

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { StyledRadio, Container } from "./style";
+import { StyledRadio, Container, RadioWrapper } from "./style";
 import uniqid from 'uniqid';
 
 const DisplayRadio = (props) => {
@@ -11,7 +11,7 @@ const DisplayRadio = (props) => {
       <span>Did you graduate?</span>
           {values.map((val) => {
         return (
-          <div key={uniqid()}>
+          <RadioWrapper key={uniqid()}>
             <StyledRadio
               type="radio"
               name={name}
@@ -20,7 +20,7 @@ const DisplayRadio = (props) => {
               onChange={(e) => handleInput(e, index)}
             />
             <label htmlFor={name}>{val}</label>
-          </div>
+          </RadioWrapper>
         );
       })}
     </Container>

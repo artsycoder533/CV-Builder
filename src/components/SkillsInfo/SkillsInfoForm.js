@@ -45,9 +45,9 @@ const SkillsInfoForm = (props) => {
       <Container>
         <StyledTitle>Skills</StyledTitle>
         <FormWrapper>
-          <SkillsForm>
+          <StyledFormWithScroll>
             {skills.length < 1 ? (
-              <h4>No skills added, press "+" to add a skill"</h4>
+              <h4>No skills added, press "+" to add a skill.  If no skills are added, this section will be excluded from the CV."</h4>
             ) : (
               skills.map((skill, index) => {
                 return (
@@ -69,7 +69,7 @@ const SkillsInfoForm = (props) => {
                 );
               })
             )}
-          </SkillsForm>
+          </StyledFormWithScroll>
         </FormWrapper>
         <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
           <StyledAddIcon />

@@ -5,8 +5,8 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   gap: 8rem;
-  padding: 2rem;
-  /* height: 120px; */
+  padding: 1rem;
+  height: 75px;
   position: fixed;
   bottom: 0;
   left: 0;

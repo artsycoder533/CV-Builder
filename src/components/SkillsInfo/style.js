@@ -2,17 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 120px - 75px - 100px);
+  height: calc(100vh - 75px - 80px - 100px - 70px);
   display: grid;
   grid-template-rows: auto 1fr;
-  /* border: 2px solid green; */
   position: fixed;
-  top: 175px;
+  top: 250px;
 `;
 
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
+  height: 100%;
 `;
 
 export const EntryWrapper = styled.div`
@@ -25,8 +25,8 @@ export const EntryWrapper = styled.div`
 
 export const SkillsForm = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  //align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
   max-width: 1400px;
@@ -39,11 +39,13 @@ export const SkillsForm = styled.div`
 `;
 
 export const StyledFormWithScroll = styled.form`
-  /* width: 100%; */
   display: grid;
+  /* justify-content: center; */
+  grid-template-columns: 1fr 1fr 1fr;
+  /* align-items: center; */
   gap: 2rem;
   background: white;
-  padding: 3rem 0;
+  padding: 3rem;
   overflow-y: scroll;
   height: calc(100vh - 120px - 175px - 121px);
   position: fixed;
@@ -52,8 +54,4 @@ export const StyledFormWithScroll = styled.form`
   max-width: 1400px;
   width: 90vw;
   border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  border: 2px solid black;
 `;

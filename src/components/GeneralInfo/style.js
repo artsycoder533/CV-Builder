@@ -2,18 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 75px - 100px - 120px);
+  height: calc(100vh - 75px - 80px - 100px - 75px);
   display: grid;
-  grid-template-rows: auto 1fr;
   position: fixed;
-  top: 175px;
+  top: 255px;
+  justify-content: center;
 `;
 
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: calc(100vh - 175px - 120px - 120px);
-  overflow-y: scroll;
+  
+  padding: 1rem 0;
+  width: 100%;
 `;
 
 export const EntryWrapper = styled.div`
@@ -37,9 +38,12 @@ export const GeneralForm = styled.div`
   max-width: 1400px;
   width: 90vw;
   border-radius: 8px;
-  padding: 1rem 0;
+  padding: 1rem;
+  height: calc(100vh - 75px - 80px - 100px - 80px);
+  overflow-y: scroll;
+  border: 2px solid red;
 
   @media screen and (min-width: 992px) {
-    padding: 3rem;
+    /* padding: 3rem; */
   }
 `;

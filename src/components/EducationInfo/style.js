@@ -3,12 +3,11 @@ import { FiPlus } from "react-icons/fi";
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 120px - 75px - 100px);
+  height: calc(100vh - 75px - 80px - 100px - 70px);
   display: grid;
-  grid-template-rows: auto 1fr;
-  /* border: 2px solid green; */
   position: fixed;
-  top: 175px;
+  top: 250px;
+  padding-bottom: 0.5rem;
 `;
 
 export const EntryWrapper = styled.div`
@@ -33,4 +32,11 @@ export const FormWrapper = styled.div`
 export const StyledAddIcon = styled(FiPlus)`
   font-size: 2rem;
   font-weight: bold;
+`;
+
+export const StyledWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  flex-wrap: wrap;
 `;

@@ -86,9 +86,10 @@ const CV = (props) => {
             startDate,
             designation,
             endDate,
+            id
           } = ed;
           return (
-            <React.Fragment>
+            <React.Fragment key={id}>
               <JobTitle>{school}</JobTitle>
               {graduate === "Yes" ? (
                 <JobDate>

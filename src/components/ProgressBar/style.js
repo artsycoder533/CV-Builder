@@ -13,7 +13,6 @@ export const Container = styled.div`
   top: 75px;
   left: 0;
   background: white;
-  border: 2px solid red;
 
   @media print {
     display: none;
@@ -52,4 +51,6 @@ export const StyledStatus = styled.p`
   color: purple;
   font-family: "Poppins", sans-serif;
   font-weight: ${(props) => (props.bold ? "bold" : "regular")};
+  letter-spacing: 1px;
+   text-transform: uppercase;
 `;

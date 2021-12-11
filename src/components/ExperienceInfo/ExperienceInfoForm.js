@@ -123,8 +123,8 @@ const ExperienceInfoForm = (props) => {
                     placeholder="Enter job duties.  Try to keep it short."
                     value={duties}
                     name="duties"
-                    cols={30}
-                    rows={10}
+                    cols={20}
+                    rows={5}
                     index={index}
                     handleInput={handleInput}
                   />

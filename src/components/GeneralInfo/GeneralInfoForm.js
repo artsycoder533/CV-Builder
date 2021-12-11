@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DisplayInput from '../DisplayInput/DisplayInput';
-import { StyledForm } from "../Form/style";
+import { StyledForm, StyledFormWithScroll } from "../Form/style";
 import { Container, EntryWrapper, FormWrapper, GeneralForm } from "./style";
 import { StyledTitle } from "../Title/style";
 import uniqid from 'uniqid';
@@ -38,7 +38,7 @@ const GeneralInfoForm = (props) => {
       <Container>
         <StyledTitle>General Info</StyledTitle>
         <FormWrapper>
-          <GeneralForm
+          <StyledFormWithScroll
             action=""
             onSubmit={handleSubmit}
             className="general__form">
@@ -92,7 +92,7 @@ const GeneralInfoForm = (props) => {
                 placeholder="www or http(s)"
               />
             </EntryWrapper>
-          </GeneralForm>
+          </StyledFormWithScroll>
         </FormWrapper>
       </Container>
     );

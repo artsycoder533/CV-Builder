@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   font-weight: bold;
   /* border-radius: 10px; */
   border: none;
-  background-image: linear-gradient(to right, blue, purple);
+  background: blue;
   color: white;
   cursor: pointer;
   letter-spacing: 1px;
@@ -51,6 +51,11 @@ export const AbsoluteIconButton = styled(StyledButton)`
   border-radius: 50%;
   padding: 0.75rem;
   z-index: 2;
+  background: red;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const AbsoluteTrashButton = styled(IconButton)`

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledLabel, StyledOption, StyledSelect } from "./style";
+import { StyledLabel, StyledOption, StyledSelect, Container } from "./style";
 import uniqid from "uniqid";
 
 const DisplaySelect = (props) => {
