@@ -17,6 +17,7 @@ export const EntryWrapper = styled.div`
   border-radius: 10px;
   padding: 1rem;
   background: white;
+  transition: all 0.3s ease-in-out;
 
   @media screen and (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
@@ -35,8 +36,8 @@ export const StyledAddIcon = styled(FiPlus)`
 `;
 
 export const StyledWrapper = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 `;

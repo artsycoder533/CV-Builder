@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0;
   height: 80px;
   position: fixed;
   /* position: relative; */
@@ -20,7 +20,6 @@ export const Container = styled.div`
 `;
 
 export const Circle = styled.div`
-  border: 2px solid blue;
   width: 40px;
   height: 40px;
   display: grid;
@@ -32,6 +31,7 @@ export const Circle = styled.div`
   color: white; */
   background: ${(props) => (props.current ? "blue" : "white")};
   color: ${(props) => (props.current ? "white" : "gray")};
+  border: ${(props) => (props.current ? "none" : "2px solid gray")};
   z-index: 2;
 
   transition: all 0.3s ease-in-out;
@@ -48,9 +48,7 @@ export const StyledFiCheck = styled(FiCheck)`
 `;
 
 export const StyledStatus = styled.p`
-  color: purple;
   font-family: "Poppins", sans-serif;
   font-weight: ${(props) => (props.bold ? "bold" : "regular")};
   letter-spacing: 1px;
-   text-transform: uppercase;
 `;

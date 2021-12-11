@@ -69,8 +69,8 @@ function App() {
 
   return (
     <section className="App">
-      <Header view={view} />
-      <ProgressBar view={view} />
+      {view > 3 ? "" : <Header view={view} />}
+      {view > 3 ? "" : <ProgressBar view={view} />}
       <article>
         {view === 0 ? (
           <GeneralInfoForm general={general} setGeneral={setGeneral}/>

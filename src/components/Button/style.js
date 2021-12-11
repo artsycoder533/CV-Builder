@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FiTrash2 } from "react-icons/fi";
+import { FiTrash2, FiPrinter } from "react-icons/fi";
 
 export const StyledButton = styled.button`
   /* width: 10rem; */
@@ -46,11 +46,13 @@ export const StyledTrashIcon = styled(FiTrash2)`
 
 export const AbsoluteIconButton = styled(StyledButton)`
   position: absolute;
-  right: 15px;
-  top: 35px;
+  /* right: 15px;
+  top: 35px; */
+  bottom: 0;
+  right: 10px;
   border-radius: 50%;
   padding: 0.75rem;
-  z-index: 2;
+  z-index: 3;
   background: red;
 
   &:hover {

@@ -33,6 +33,15 @@ const EducationInfoForm = (props) => {
     "Arts",
   ]);
 
+  const [errors, setErrors] = useState({
+    school: "",
+    major: "",
+    dateStarted: "",
+    degree: "",
+    designation: ""
+    
+  })
+
   const handleSubmit = () => {};
 
   const handleInput = (e, index) => {
@@ -57,7 +66,7 @@ const EducationInfoForm = (props) => {
 
   const addNewEntry = () => {
     const copyOfState = [...props.education];
-    copyOfState.push({
+    copyOfState.unshift({
       school: "",
       major: "",
       startDate: "",
@@ -99,6 +108,7 @@ const EducationInfoForm = (props) => {
 
             return (
               <EntryWrapper key={id}>
+                <div>
                 <DisplayInput
                   label="School"
                   name="school"
@@ -109,6 +119,9 @@ const EducationInfoForm = (props) => {
                   index={index}
                   id={id}
                 />
+                <small style={{color: "red"}}>Error!</small>
+                </div>
+                
                 <DisplayInput
                   label="Major"
                   name="major"
@@ -191,7 +204,8 @@ const EducationInfoForm = (props) => {
                 {graduate === "No" ? (
                   ""
                 ) : (
-                  <StyledWrapper>
+                   <React.Fragment>
+                    <div>
                       <DisplaySelect
                         label={"Degree"}
                         value={degree}
@@ -201,7 +215,8 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
-                 
+                    </div>
+                    <div>
                       <DisplaySelect
                         label={"Designation"}
                         value={designation}
@@ -211,8 +226,8 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
-                    
-                  </StyledWrapper>
+                    </div>
+                   </React.Fragment>
                 )}
 
                 {index === 0 ? (

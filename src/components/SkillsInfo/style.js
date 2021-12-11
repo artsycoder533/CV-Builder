@@ -18,16 +18,22 @@ export const FormWrapper = styled.div`
 export const EntryWrapper = styled.div`
   display: flex;
   align-items: center;
+  /* display: grid;
+  grid-template-columns: 1fr; */
+  align-items: center;
   border-radius: 10px;
   padding: 1rem;
   background: white;
+  width: 100%;
+  height: auto;
+  justify-content: center;
 `;
 
 export const SkillsForm = styled.div`
   display: flex;
   /* justify-content: center; */
   //align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 2rem;
   max-width: 1400px;
   width: 90vw;
@@ -40,12 +46,12 @@ export const SkillsForm = styled.div`
 
 export const StyledFormWithScroll = styled.form`
   display: grid;
-  /* justify-content: center; */
-  grid-template-columns: 1fr 1fr 1fr;
-  /* align-items: center; */
+  justify-content: center;
+
+  align-items: center;
   gap: 2rem;
   background: white;
-  padding: 3rem;
+  padding: rem;
   overflow-y: scroll;
   height: calc(100vh - 120px - 175px - 121px);
   position: fixed;
@@ -54,4 +60,9 @@ export const StyledFormWithScroll = styled.form`
   max-width: 1400px;
   width: 90vw;
   border-radius: 10px;
+
+  @media screen and (min-width: 992px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3rem;
+  }
 `;

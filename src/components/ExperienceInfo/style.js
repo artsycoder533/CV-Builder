@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 120px - 75px - 100px);
+  height: calc(100vh - 75px - 80px - 100px - 70px);
   display: grid;
   grid-template-rows: auto 1fr;
-  /* border: 2px solid green; */
   position: fixed;
-  top: 175px;
+  top: 250px;
 `;
 
 export const FormWrapper = styled.div`
@@ -22,6 +21,7 @@ export const EntryWrapper = styled.div`
   border-radius: 10px;
   padding: 1rem;
   background: white;
+  
 
   @media screen and (min-width: 992px) {
     grid-template-columns: 1fr 1fr;

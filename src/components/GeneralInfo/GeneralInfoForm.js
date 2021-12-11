@@ -6,7 +6,11 @@ import { StyledTitle } from "../Title/style";
 import uniqid from 'uniqid';
 
 const GeneralInfoForm = (props) => {
-    
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: ""
+    })
     const handleInput = (e) => { 
         e.preventDefault();
         const name = e.currentTarget.name;
@@ -43,14 +47,17 @@ const GeneralInfoForm = (props) => {
             onSubmit={handleSubmit}
             className="general__form">
             <EntryWrapper>
-              <DisplayInput
-                label="Name"
-                name="name"
-                value={name}
-                type="text"
-                handleInput={handleInput}
-                placeholder="enter name"
-              />
+              <div>
+                <DisplayInput
+                  label="Name"
+                  name="name"
+                  value={name}
+                  type="text"
+                  handleInput={handleInput}
+                  placeholder="enter name"
+                />
+                <small>error</small>
+              </div>
               <DisplayInput
                 label="Email"
                 name="email"

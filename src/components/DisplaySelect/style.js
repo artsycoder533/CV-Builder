@@ -11,6 +11,7 @@ export const StyledSelect = styled.select`
   margin-right: 1rem;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  width: 100%;
 `;
 
 export const StyledOption = styled.option`

@@ -7,14 +7,14 @@ const Header = (props) => {
     return (
       <Container>
         <Title>CV Builder</Title>
-        {view === 4 ? (
+        {/* {view === 4 ? (
           <DownloadButton className="hide" onClick={() => window.print()}>
             {" "}
             <StyledDownloadIcon />
           </DownloadButton>
         ) : (
           ""
-        )}
+        )} */}
       </Container>
     );
 }
