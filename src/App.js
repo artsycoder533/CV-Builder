@@ -49,6 +49,7 @@ function App() {
   ]);
   const [skills, setSkills] = useState([""]);
   const [view, setView] = useState(0);
+  const [valid, setValid] = useState(false);
 
   //functions
   const generateCV = () => {
@@ -73,7 +74,7 @@ function App() {
       {view > 3 ? "" : <ProgressBar view={view} />}
       <article>
         {view === 0 ? (
-          <GeneralInfoForm general={general} setGeneral={setGeneral}/>
+          <GeneralInfoForm general={general} setGeneral={setGeneral} setValid={setValid}/>
         ) : view === 1 ? (
             <div><EducationInfoForm education={education} setEducation={setEducation}/></div>
         ) : view === 2 ? (
@@ -96,6 +97,7 @@ function App() {
         nextView={nextView}
         view={view}
         generateCV={generateCV}
+        valid={valid}
       />
     </section>
   );

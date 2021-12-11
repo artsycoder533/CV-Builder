@@ -1,16 +1,62 @@
 import React, { useState } from "react";
 import DisplayInput from '../DisplayInput/DisplayInput';
 import { StyledForm, StyledFormWithScroll } from "../Form/style";
-import { Container, EntryWrapper, FormWrapper, GeneralForm } from "./style";
+import { Container, EntryWrapper, FormWrapper, GeneralForm, StyledError } from "./style";
 import { StyledTitle } from "../Title/style";
 import uniqid from 'uniqid';
+import { StyledButton, SaveButton, StyledSaveIcon } from "../Button/style";
 
 const GeneralInfoForm = (props) => {
   const [errors, setErrors] = useState({
-    name: "",
-    phone: "",
-    email: ""
-    })
+    nameErr: "",
+    phoneErr: "",
+    emailErr: "",
+    githubErr: "",
+    portfolioErr: "",
+    linkedInErr:""
+  });
+
+  const validateErrors = () => {
+    let nameError, phoneError, emailError, portfolioError, githubError, linkedInError;
+    let isValid = true;
+    if (name.trim() === "" || name.match(/\d/)) {
+      nameError = "Enter a valid name";
+      isValid = false;
+    }
+    if (phone.trim() === "") {
+      phoneError = "Enter a valid phone number";
+      isValid = false;
+    }
+    if (email.trim() === "") {
+      emailError = "Enter a valid email";
+      isValid = false;
+    }
+    if (!github.trim().match(/^www\.|^http:|^https:/)) {
+      githubError = "Links must start with www, http,or https";
+      isValid = false;
+    }
+    if (!github.trim().match(/^[.\w{2,3}]$/)) {
+      githubError = "Links must end with a valid domain";
+      isValid = false;
+    }
+    if (!portfolio.trim().match(/^[www|http|https]/)) {
+      portfolioError = "Links must start with www, http,or https";
+      isValid = false;
+    }
+    if (!linkedIn.trim().match(/^[www|http|https]/)) {
+      linkedInError = "Links must start with www, http,or https";
+      isValid = false;
+    }
+    setErrors({
+      nameErr: nameError,
+      phoneErr: phoneError,
+      emailErr: emailError,
+      githubErr: githubError,
+      portfolioErr: portfolioError,
+      linkedInErr: linkedInError
+    });
+    return isValid;
+  }
     const handleInput = (e) => { 
         e.preventDefault();
         const name = e.currentTarget.name;
@@ -20,7 +66,9 @@ const GeneralInfoForm = (props) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+      e.preventDefault();
+      const isValid = validateErrors();
+      isValid ? props.setValid(true) : props.setValid(false);
     }
     const resetForm = () => {
         const reset = {
@@ -36,7 +84,7 @@ const GeneralInfoForm = (props) => {
     }
     
     const { general, setGeneral } = props;
-
+  const { nameErr, phoneErr, emailErr, portfolioErr, githubErr, linkedInErr } = errors;
     const { name, email, phone, portfolio, linkedIn, github, id } = general;
     return (
       <Container>
@@ -56,51 +104,70 @@ const GeneralInfoForm = (props) => {
                   handleInput={handleInput}
                   placeholder="enter name"
                 />
-                <small>error</small>
+                <StyledError>{nameErr}</StyledError>
               </div>
-              <DisplayInput
-                label="Email"
-                name="email"
-                value={email}
-                type="email"
-                handleInput={handleInput}
-                placeholder="email@email.com"
-              />
-              <DisplayInput
-                label="Phone"
-                name="phone"
-                value={phone}
-                type="tel"
-                handleInput={handleInput}
-                placeholder="555-555-5555"
-              />
-              <DisplayInput
-                label="Portfolio"
-                name="portfolio"
-                value={portfolio}
-                type="text"
-                handleInput={handleInput}
-                placeholder="www or http(s)"
-              />
-              <DisplayInput
-                label="LinkedIn"
-                name="linkedIn"
-                value={linkedIn}
-                type="text"
-                handleInput={handleInput}
-                placeholder="www or http(s)"
-              />
-              <DisplayInput
-                label="Github"
-                name="github"
-                value={github}
-                type="text"
-                handleInput={handleInput}
-                placeholder="www or http(s)"
-              />
+              <div>
+                <DisplayInput
+                  label="Email"
+                  name="email"
+                  value={email}
+                  type="email"
+                  handleInput={handleInput}
+                  placeholder="email@email.com"
+                />
+                <StyledError>{emailErr}</StyledError>
+              </div>
+              <div>
+                <DisplayInput
+                  label="Phone"
+                  name="phone"
+                  value={phone}
+                  type="tel"
+                  handleInput={handleInput}
+                  placeholder="555-555-5555"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                />
+                <StyledError>{phoneErr}</StyledError>
+              </div>
+              <div>
+                <DisplayInput
+                  label="Portfolio"
+                  name="portfolio"
+                  value={portfolio}
+                  type="text"
+                  handleInput={handleInput}
+                  placeholder="www or http(s) (optional)"
+                />
+                <StyledError>{portfolioErr}</StyledError>
+              </div>
+              <div>
+                <DisplayInput
+                  label="LinkedIn"
+                  name="linkedIn"
+                  value={linkedIn}
+                  type="text"
+                  handleInput={handleInput}
+                  placeholder="www or http(s) (optional)"
+                />
+                <StyledError>{linkedInErr}</StyledError>
+              </div>
+              <div>
+                <DisplayInput
+                  label="Github"
+                  name="github"
+                  value={github}
+                  type="text"
+                  handleInput={handleInput}
+                  placeholder="www or http(s) (optional)"
+                />
+                <StyledError>{githubErr}</StyledError>
+              </div>
             </EntryWrapper>
           </StyledFormWithScroll>
         </FormWrapper>
+        <SaveButton type="submit" onClick={handleSubmit}>
+          Save <StyledSaveIcon />
+        </SaveButton>
       </Container>
     );
 }

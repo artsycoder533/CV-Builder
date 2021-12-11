@@ -61,11 +61,11 @@ const CV = (props) => {
           {/* <hr /> */}
 
           {experience.map((exp) => {
-            const { title, company, startDate, endDate, employed, duties } =
+            const { title, company, startDate, endDate, employed, duties, id } =
               exp;
             console.log(startDate);
             return (
-              <React.Fragment>
+              <React.Fragment key={id}>
                 <JobTitle>{title}</JobTitle>
                 <JobDate>
                   <span>{company}</span>

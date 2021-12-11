@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FiTrash2, FiPrinter } from "react-icons/fi";
+import { FiTrash2, FiPrinter, FiSave } from "react-icons/fi";
 
 export const StyledButton = styled.button`
   /* width: 10rem; */
@@ -90,3 +90,26 @@ export const DownloadButton = styled(PlainButton)`
     display: none;
   }
 `;
+
+export const SaveButton = styled(StyledButton)`
+  background: red;
+  color: white;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  padding: 0.5rem;
+`;
+
+export const StyledSaveIcon = styled(FiSave)`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+export const StyledDisabledButton = styled(StyledButton)`
+  background: gray;
+  cursor: none;
+
+  &:hover {
+    opacity: 1;
+  }
+  `;
