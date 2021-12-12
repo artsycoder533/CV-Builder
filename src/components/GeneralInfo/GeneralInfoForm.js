@@ -48,26 +48,26 @@ const GeneralInfoForm = (props) => {
       githubError = "Links must start with www, http,or https";
       isValid = false;
     }
-    if (!github.trim().match(/[.]\w{2,3}$/)) {
-      githubError = "Links must end with a valid domain";
-      isValid = false;
-    }
+    // if (!github.trim().match(/[.]\w{2,3}$/)) {
+    //   githubError = "Links must end with a valid domain";
+    //   isValid = false;
+    // }
     if (!portfolio.trim().match(/^www\.|^http:|^https:/)) {
       portfolioError = "Links must start with www, http,or https";
       isValid = false;
     }
-    if (!portfolio.trim().match(/[.]\w{2,3}$/)) {
-      portfolioError = "Links must end with a valid domain";
-      isValid = false;
-    }
+    // if (!portfolio.trim().match(/[.]\w{2,3}$/)) {
+    //   portfolioError = "Links must end with a valid domain";
+    //   isValid = false;
+    // }
     if (!linkedIn.trim().match(/^www\.|^http:|^https:/)) {
       linkedInError = "Links must start with www, http,or https";
       isValid = false;
     }
-    if (!linkedIn.trim().match(/[.]\w{2,3}$/)) {
-      linkedInError = "Links must end with a valid domain";
-      isValid = false;
-    }
+    // if (!linkedIn.trim().match(/[.]\w{2,3}$/)) {
+    //   linkedInError = "Links must end with a valid domain";
+    //   isValid = false;
+    // }
 
     setErrors({
       nameErr: nameError,
@@ -163,7 +163,7 @@ const GeneralInfoForm = (props) => {
                 value={portfolio}
                 type="text"
                 handleInput={handleInput}
-                placeholder="www or http(s) (optional)"
+                placeholder="www or http(s)"
               />
               <StyledError>{portfolioErr}</StyledError>
             </div>
@@ -174,7 +174,7 @@ const GeneralInfoForm = (props) => {
                 value={linkedIn}
                 type="text"
                 handleInput={handleInput}
-                placeholder="www or http(s) (optional)"
+                placeholder="www or http(s)"
               />
               <StyledError>{linkedInErr}</StyledError>
             </div>
@@ -185,7 +185,7 @@ const GeneralInfoForm = (props) => {
                 value={github}
                 type="text"
                 handleInput={handleInput}
-                placeholder="www or http(s) (optional)"
+                placeholder="www or http(s)"
               />
               <StyledError>{githubErr}</StyledError>
             </div>

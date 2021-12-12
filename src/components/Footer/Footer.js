@@ -21,13 +21,22 @@ const Footer = (props) => {
             <StyledRightIcon />
           </StyledDisabledButton>
         </React.Fragment>
+      ) : view === 0 ? (
+        <React.Fragment>
+          <StyledDisabledButton disabled onClick={prevView}>
+            <StyledLeftIcon />
+          </StyledDisabledButton>
+          <StyledButton onClick={nextView}>
+            <StyledRightIcon />
+          </StyledButton>
+        </React.Fragment>
       ) : (
         <React.Fragment>
           <StyledButton onClick={prevView}>
             <StyledLeftIcon />
           </StyledButton>
           <StyledButton onClick={nextView}>
-            <StyledRightIcon />
+            Generate <StyledSendIcon />
           </StyledButton>
         </React.Fragment>
       )}

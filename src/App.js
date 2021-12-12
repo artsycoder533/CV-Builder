@@ -50,6 +50,7 @@ function App() {
   const [skills, setSkills] = useState([""]);
   const [view, setView] = useState(Number(localStorage.getItem("view")) || 0);
   const [valid, setValid] = useState(localStorage.getItem("valid") || false);
+  //add a valid variable for every form so that you dont have to keep clicking save if you go back
 
   useEffect(() => {
     localStorage.setItem("educationList", JSON.stringify(education));
