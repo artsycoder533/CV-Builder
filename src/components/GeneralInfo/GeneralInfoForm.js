@@ -30,6 +30,7 @@ const GeneralInfoForm = (props) => {
       githubError,
       linkedInError;
     let isValid = true;
+    const { name, phone, email, portfolio, github, linkedIn } = general[0];
     if (name.trim() === "" || name.match(/\d/)) {
       nameError = "Enter a valid name";
       isValid = false;
@@ -82,8 +83,12 @@ const GeneralInfoForm = (props) => {
     e.preventDefault();
     const name = e.currentTarget.name;
     const value = e.currentTarget.value;
+    const copyOfGeneral = [...props.general];
+    copyOfGeneral[0][name] = value;
+    setGeneral([...copyOfGeneral]);
     //use the spread operator to copy the old values into the state so the new values wont override
-    setGeneral({ ...general, [name]: value });
+    // setGeneral({ ...general, [name]: value });
+    localStorage.setItem("generalList", JSON.stringify(general));
   };
 
   const handleSubmit = (e) => {

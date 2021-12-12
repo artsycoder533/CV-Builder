@@ -12,7 +12,7 @@ import SkillsInfoForm from "./components/SkillsInfo/SkillsInfoForm";
 
 function App() {
   //state variables
-  const [general, setGeneral] = useState({
+  const [general, setGeneral] = useState(JSON.parse(localStorage.getItem("generalList")) || [{
     name: "",
     email: "",
     phone: "",
@@ -20,8 +20,8 @@ function App() {
     linkedIn: "",
     github: "",
     id: uniqid()
-  });
-  const [education, setEducation] = useState([
+  }]);
+  const [education, setEducation] = useState(JSON.parse(localStorage.getItem("educationList")) || [
     {
       school: "",
       major: "",
@@ -36,7 +36,7 @@ function App() {
       id: uniqid(),
     },
   ]);
-  const [experience, setExperience] = useState([
+  const [experience, setExperience] = useState(JSON.parse(localStorage.getItem("experienceList")) || [
     {
       title: "",
       company: "",
@@ -48,24 +48,45 @@ function App() {
     },
   ]);
   const [skills, setSkills] = useState([""]);
-  const [view, setView] = useState(0);
-  const [valid, setValid] = useState(false);
+  const [view, setView] = useState(Number(localStorage.getItem("view")) || 0);
+  const [valid, setValid] = useState(localStorage.getItem("valid") || false);
+
+  useEffect(() => {
+    localStorage.setItem("educationList", JSON.stringify(education));
+  }, [education]);
+  useEffect(() => {
+    localStorage.setItem("experienceList", JSON.stringify(experience));
+  }, [experience]);
+  useEffect(() => {
+    localStorage.setItem("generalList", JSON.stringify(general));
+  }, [general]);
+  useEffect(() => {
+    localStorage.setItem("skillList", JSON.stringify(skills));
+  }, [skills]);
+  useEffect(() => {
+    console.log("valid changed");
+  localStorage.setItem("valid", valid);
+});
+  useEffect(() => {
+    localStorage.setItem("view", view);
+  });
 
   //functions
   const generateCV = () => {
-    // const copyOfState = { ...this.state };
-    // copyOfState.view++;
-    // this.setState(copyOfState);
+    setView(Number(view) + 1);
   };
 
   const nextView = (e) => {
     e.preventDefault();
-    setView(view + 1);
+    if (view === 4) return;
+    setView(Number(view) + 1);
+    setValid(false);
   };
 
   const prevView = (e) => {
     e.preventDefault();
-    setView(view - 1);
+    if (view === 0) return;
+    setView(Number(view) - 1);
   };
 
   return (
@@ -76,11 +97,11 @@ function App() {
         {view === 0 ? (
           <GeneralInfoForm general={general} setGeneral={setGeneral} setValid={setValid}/>
         ) : view === 1 ? (
-            <div><EducationInfoForm education={education} setEducation={setEducation}/></div>
+            <div><EducationInfoForm education={education} setEducation={setEducation} setValid={setValid}/></div>
         ) : view === 2 ? (
-              <div><ExperienceInfoForm experience={experience} setExperience={setExperience}/></div>
+              <div><ExperienceInfoForm experience={experience} setExperience={setExperience} setValid={setValid}/></div>
         ) : view === 3 ? (
-                <div><SkillsInfoForm skills={skills} setSkills={setSkills}/></div>
+                <div><SkillsInfoForm skills={skills} setSkills={setSkills} setValid={setValid}/></div>
         ) : (
           <div>
             <CV

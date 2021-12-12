@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DisplayInput from "../DisplayInput/DisplayInput";
 import DisplayRadio from "../DisplayRadio/DisplayRadio";
 import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
@@ -7,6 +7,8 @@ import {
   AbsoluteIconButton,
   AbsoluteTrashButton,
   IconButton,
+  SaveButton,
+  StyledSaveIcon,
   StyledTrashIcon,
 } from "../Button/style";
 import uniqid from "uniqid";
@@ -34,15 +36,19 @@ const EducationInfoForm = (props) => {
   ]);
 
   const [errors, setErrors] = useState({
-    school: "",
-    major: "",
-    dateStarted: "",
-    degree: "",
-    designation: ""
+    schoolErr: "",
+    majorErr: "",
+    dateStartedErr: "",
+    degreeErr: "",
+    designationErr: ""
     
-  })
+  });
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e, index) => {
+    e.preventDefault();
+    const isValid = validateErrors(index);
+    isValid ? props.setValid(true) : props.setValid(false);
+  };
 
   const handleInput = (e, index) => {
     const name = e.currentTarget.name;
@@ -56,6 +62,7 @@ const EducationInfoForm = (props) => {
 
     type === "radio" ? (entry.graduate = value) : (entry.graduate = "");
     props.setEducation([...copyOfEducation]);
+    //add to local storage
   };
 
   const deleteEntry = (index) => {
@@ -82,7 +89,46 @@ const EducationInfoForm = (props) => {
     props.setEducation(copyOfState);
   };
 
+  const validateErrors = (index) => {
+    let schoolError, majorError, startDateError, endDateError, degreeError;
+    let isValid = true;
+    const { school, major, startDate, endDate, degree } = education[index];
+     if (school.trim() === "" || school.match(/\d/)) {
+       schoolError = "School name must not be empty";
+       isValid = false;
+    }
+     if (major.trim() === "" || major.match(/\d/)) {
+       majorError = "Major/course of study must not be empty";
+       isValid = false;
+    }
+     if (startDate ==="") {
+      startDateError = "Must select a start date";
+       isValid = false;
+    }
+    if (education[index]["attending"] === false) {
+      if (endDate === "") {
+        endDateError = "School name must not be empty";
+        isValid = false;
+      }
+    }
+     
+    if (degree === "") {
+      degreeError = "A degree must be selected";
+      isValid = false;
+    }
+    setErrors({
+      majorErr: majorError,
+      schoolErr: schoolError,
+      startDateErr: startDateError,
+      endDateErr: endDateError,
+      degreeErr: degreeError
+    });
+    return isValid;
+  };
+
+
   const { education } = props;
+  const { schoolErr, majorErr, startDateErr, endDateErr, degreeErr } = errors;
   return (
     <Container>
       <StyledTitle>Education</StyledTitle>
@@ -109,29 +155,31 @@ const EducationInfoForm = (props) => {
             return (
               <EntryWrapper key={id}>
                 <div>
-                <DisplayInput
-                  label="School"
-                  name="school"
-                  value={school}
-                  type="text"
-                  handleInput={handleInput}
-                  placeholder="enter school name"
-                  index={index}
-                  id={id}
-                />
-                <small style={{color: "red"}}>Error!</small>
+                  <DisplayInput
+                    label="School"
+                    name="school"
+                    value={school}
+                    type="text"
+                    handleInput={handleInput}
+                    placeholder="enter school name"
+                    index={index}
+                    id={id}
+                  />
+                  <small style={{ color: "red" }}>{schoolErr}</small>
                 </div>
-                
-                <DisplayInput
-                  label="Major"
-                  name="major"
-                  value={major}
-                  type="text"
-                  handleInput={handleInput}
-                  placeholder="enter major"
-                  index={index}
-                  id={id}
-                />
+                <div>
+                  <DisplayInput
+                    label="Major/Course of Study"
+                    name="major"
+                    value={major}
+                    type="text"
+                    handleInput={handleInput}
+                    placeholder="enter major"
+                    index={index}
+                    id={id}
+                  />
+                  <small style={{ color: "red" }}>{majorErr}</small>
+                </div>
                 <DisplayInput
                   label="Minor"
                   name="minor"
@@ -154,28 +202,33 @@ const EducationInfoForm = (props) => {
                     id={id}
                   />
                 )}
-
-                <DisplayInput
-                  label="Date Started"
-                  name="startDate"
-                  value={startDate}
-                  type="date"
-                  handleInput={handleInput}
-                  index={index}
-                  id={id}
-                />
-                {attending === true ? (
-                  ""
-                ) : (
+                <div>
                   <DisplayInput
-                    label="Date Ended"
-                    name="endDate"
-                    value={endDate}
+                    label="Date Started"
+                    name="startDate"
+                    value={startDate}
                     type="date"
                     handleInput={handleInput}
                     index={index}
                     id={id}
                   />
+                  <small style={{ color: "red" }}>{startDateErr}</small>
+                </div>
+                {attending === true ? (
+                  ""
+                ) : (
+                  <div>
+                    <DisplayInput
+                      label="Date Ended"
+                      name="endDate"
+                      value={endDate}
+                      type="date"
+                      handleInput={handleInput}
+                      index={index}
+                      id={id}
+                    />
+                    <small style={{ color: "red" }}>{endDateErr}</small>
+                  </div>
                 )}
 
                 {attending === true ? (
@@ -204,7 +257,7 @@ const EducationInfoForm = (props) => {
                 {graduate === "No" ? (
                   ""
                 ) : (
-                   <React.Fragment>
+                  <React.Fragment>
                     <div>
                       <DisplaySelect
                         label={"Degree"}
@@ -215,6 +268,7 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
+                      <small style={{ color: "red" }}>{degreeErr}</small>
                     </div>
                     <div>
                       <DisplaySelect
@@ -227,7 +281,12 @@ const EducationInfoForm = (props) => {
                         id={id}
                       />
                     </div>
-                   </React.Fragment>
+                    <SaveButton
+                      type="submit"
+                      onClick={(e) => handleSubmit(e, index)}>
+                      Save <StyledSaveIcon />
+                    </SaveButton>
+                  </React.Fragment>
                 )}
 
                 {index === 0 ? (
@@ -242,6 +301,7 @@ const EducationInfoForm = (props) => {
               </EntryWrapper>
             );
           })}
+          
         </StyledFormWithScroll>
       </FormWrapper>
       <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>

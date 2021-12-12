@@ -12,35 +12,24 @@ const Footer = (props) => {
 
   return (
     <StyledFooter>
-      {view === 0 ? (
-        ""
-      ) : (valid === true ?<StyledButton onClick={prevView}>
-          <StyledLeftIcon />
-        </StyledButton> :
-        <StyledDisabledButton onClick={prevView}>
-          <StyledLeftIcon />
-        </StyledDisabledButton>
-      )}
-      {view > 2 && view < 4 ? (
-        valid === true ? (
-          <StyledButton onClick={nextView}>
-            Generate <StyledSendIcon />
-          </StyledButton>
-        ) : (
-          <StyledDisabledButton disabled onClick={nextView}>
-            Generate <StyledSendIcon />
+      {valid !== true ? (
+        <React.Fragment>
+          <StyledDisabledButton disabled onClick={prevView}>
+            <StyledLeftIcon />
           </StyledDisabledButton>
-        )
-      ) : view > 3 ? (
-        ""
-      ) : valid === true ? (
-        <StyledButton onClick={nextView}>
-          <StyledRightIcon />
-        </StyledButton>
+          <StyledDisabledButton disabled onClick={nextView}>
+            <StyledRightIcon />
+          </StyledDisabledButton>
+        </React.Fragment>
       ) : (
-        <StyledDisabledButton disabled onClick={nextView}>
-          <StyledRightIcon />
-        </StyledDisabledButton>
+        <React.Fragment>
+          <StyledButton onClick={prevView}>
+            <StyledLeftIcon />
+          </StyledButton>
+          <StyledButton onClick={nextView}>
+            <StyledRightIcon />
+          </StyledButton>
+        </React.Fragment>
       )}
     </StyledFooter>
   );
