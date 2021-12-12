@@ -42,4 +42,8 @@ export const StyledWrapper = styled.div`
   flex-wrap: wrap; */
 `;
 
-
+export const StyledError = styled.small`
+  color: red;
+  font-weight: bold;
+  transition: 0.3ms all ease-in-out;
+`;

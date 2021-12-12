@@ -105,9 +105,9 @@ const EducationInfoForm = (props) => {
       startDateError = "Must select a start date";
        isValid = false;
     }
-    if (education[index]["attending"] === false) {
+    if (education[index]["attending"] !== true) {
       if (endDate === "") {
-        endDateError = "School name must not be empty";
+        endDateError = "Must select an end date";
         isValid = false;
       }
     }
