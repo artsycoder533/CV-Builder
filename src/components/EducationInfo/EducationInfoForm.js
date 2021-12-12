@@ -19,6 +19,7 @@ import {
   StyledAddIcon,
   FormWrapper,
   StyledWrapper,
+  StyledError,
 } from "./style";
 import { EducationForm, StyledForm, StyledFormWithScroll } from "../Form/style";
 import { StyledTitle } from "../Title/style";
@@ -92,7 +93,7 @@ const EducationInfoForm = (props) => {
   const validateErrors = (index) => {
     let schoolError, majorError, startDateError, endDateError, degreeError;
     let isValid = true;
-    const { school, major, startDate, endDate, degree } = education[index];
+    const { school, major, startDate, endDate, degree, attending, graduate } = education[index];
      if (school.trim() === "" || school.match(/\d/)) {
        schoolError = "School name must not be empty";
        isValid = false;
@@ -105,9 +106,13 @@ const EducationInfoForm = (props) => {
       startDateError = "Must select a start date";
        isValid = false;
     }
-    if (education[index]["attending"] !== true) {
+    if (attending !== true) {
       if (endDate === "") {
         endDateError = "Must select an end date";
+        isValid = false;
+      }
+      if (graduate !== true) {
+        endDateError = "Must choose graduation status";
         isValid = false;
       }
     }
@@ -128,7 +133,7 @@ const EducationInfoForm = (props) => {
 
 
   const { education } = props;
-  const { schoolErr, majorErr, startDateErr, endDateErr, degreeErr } = errors;
+  const { schoolErr, majorErr, startDateErr, endDateErr, degreeErr, graduateErr } = errors;
   return (
     <Container>
       <StyledTitle>Education</StyledTitle>
@@ -165,7 +170,7 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  <small style={{ color: "red" }}>{schoolErr}</small>
+                  <StyledError>{schoolErr}</StyledError>
                 </div>
                 <div>
                   <DisplayInput
@@ -178,7 +183,7 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  <small style={{ color: "red" }}>{majorErr}</small>
+                  <StyledError>{majorErr}</StyledError>
                 </div>
                 <DisplayInput
                   label="Minor"
@@ -212,7 +217,7 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  <small style={{ color: "red" }}>{startDateErr}</small>
+                  <StyledError>{startDateErr}</StyledError>
                 </div>
                 {attending === true ? (
                   ""
@@ -227,7 +232,7 @@ const EducationInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
-                    <small style={{ color: "red" }}>{endDateErr}</small>
+                    <StyledError>{endDateErr}</StyledError>
                   </div>
                 )}
 
@@ -252,6 +257,7 @@ const EducationInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
+                    <StyledError>{graduateErr}</StyledError>
                   </div>
                 )}
                 {graduate === "No" ? (

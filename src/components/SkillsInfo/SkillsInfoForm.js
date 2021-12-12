@@ -6,7 +6,8 @@ import {
   FormWrapper,
   SkillsForm,
     StyledFormWithScroll,
-  EntryWrapper
+  EntryWrapper,
+  StyledError
 } from "./style";
 import {
   AbsoluteIconButton,
@@ -22,6 +23,29 @@ import uniqid from 'uniqid';
 const SkillsInfoForm = (props) => {
   const { skills, setSkills } = props;
 
+  const [errors, setErrors] = useState({
+    skillErr: ""
+  });
+
+  const validateErrors = (index) => {
+    let skillError;
+    let isValid = true;
+    const { skill } = skill[index];
+    if (skill.trim() === "") {
+     skillError = "Skill must not be blank";
+      isValid = false;
+    }
+       setErrors({
+         skillErr: skillError,
+       });
+       return isValid;
+  }
+
+  const handleSubmit = (e, index) => {
+    e.preventDefault();
+    const isValid = validateErrors(index);
+    isValid ? props.setValid(true) : props.setValid(false);
+  }
   const handleInput = (e, index) => {
     e.preventDefault();
       const copyOfState = [...skills];
@@ -41,6 +65,7 @@ const SkillsInfoForm = (props) => {
       setSkills(copyOfState);
     }
 
+  const { skillErr } = errors;
     return (
       <Container>
         <StyledTitle>Skills</StyledTitle>
@@ -52,14 +77,17 @@ const SkillsInfoForm = (props) => {
               skills.map((skill, index) => {
                 return (
                   <EntryWrapper key={index}>
-                    <DisplayInput
-                      label="Skill"
-                      name="skill"
-                      value={skill}
-                      placeholder="enter skill"
-                      handleInput={handleInput}
-                      index={index}
-                    />
+                    <div>
+                      <DisplayInput
+                        label="Skill"
+                        name="skill"
+                        value={skill}
+                        placeholder="enter skill"
+                        handleInput={handleInput}
+                        index={index}
+                      />
+                      <StyledError>{skillErr}</StyledError>
+                    </div>
                     <AbsoluteSkillsTrashButton
                       type="button"
                       onClick={() => deleteEntry(index)}>

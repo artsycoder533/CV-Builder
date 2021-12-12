@@ -66,3 +66,9 @@ export const StyledFormWithScroll = styled.form`
     padding: 3rem;
   }
 `;
+
+export const StyledError = styled.small`
+  color: red;
+  font-weight: bold;
+  transition: 0.3ms all ease-in-out;
+`;
