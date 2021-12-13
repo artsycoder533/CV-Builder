@@ -7,7 +7,6 @@ import { SaveButton, StyledSaveIcon } from "../Button/style";
 
 const GeneralInfoForm = (props) => {
   const { general, setGeneral } = props;
-  console.log(props);
 
   const [errors, setErrors] = useState({
     nameErr: "",
@@ -26,8 +25,7 @@ const GeneralInfoForm = (props) => {
       githubError,
       linkedInError;
     let isValid = true;
-    const { name, phone, email, portfolio, github, linkedIn } = general;
-    
+    const { name, phone, email, portfolio, github, linkedIn } = general[0];
     if (name.trim() === "" || name.match(/\d/)) {
       nameError = "Enter a valid name";
       isValid = false;
