@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
-  
+
   padding: 1rem 0;
   width: 100%;
 `;
@@ -42,10 +42,6 @@ export const GeneralForm = styled.div`
   height: calc(100vh - 75px - 80px - 100px - 80px);
   overflow-y: scroll;
   border: 2px solid red;
-
-  @media screen and (min-width: 992px) {
-    /* padding: 3rem; */
-  }
 `;
 
 export const StyledError = styled.small`

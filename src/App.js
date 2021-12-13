@@ -96,6 +96,10 @@ function App() {
     setView(view - 1);
   };
 
+  const resetCV = () => {
+    localStorage.clear();
+  }
+
   return (
     <section className="App">
       {view > 3 ? "" : <Header view={view} />}
@@ -126,6 +130,7 @@ function App() {
         view={view}
         generateCV={generateCV}
         valid={valid}
+        resetCV={resetCV}
       />
     </section>
   );

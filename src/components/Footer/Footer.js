@@ -8,7 +8,7 @@ import {
 import { StyledButton, StyledDisabledButton } from "../Button/style";
 
 const Footer = (props) => {
-  const { prevView, nextView, view, valid } = props;
+  const { prevView, nextView, view, valid, resetCV } = props;
   console.log(valid, typeof valid);
   return (
     <StyledFooter>
@@ -40,9 +40,14 @@ const Footer = (props) => {
           </StyledButton>
         </React.Fragment>
       ) : view === 4 ? (
-        <StyledButton onClick={prevView}>
-          <StyledLeftIcon />
-        </StyledButton>
+        <React.Fragment>
+          <StyledButton onClick={prevView}>
+            <StyledLeftIcon />
+          </StyledButton>{" "}
+          <StyledButton onClick={resetCV}>
+            Reset CV
+          </StyledButton>
+        </React.Fragment>
       ) : (
         <React.Fragment>
           <StyledButton onClick={prevView}>

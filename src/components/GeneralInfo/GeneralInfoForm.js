@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import DisplayInput from "../DisplayInput/DisplayInput";
-import { StyledForm, StyledFormWithScroll } from "../Form/style";
-import {
-  Container,
-  EntryWrapper,
-  FormWrapper,
-  GeneralForm,
-  StyledError,
-} from "./style";
+import { StyledFormWithScroll } from "../Form/style";
+import { Container, EntryWrapper, FormWrapper, StyledError } from "./style";
 import { StyledTitle } from "../Title/style";
 import uniqid from "uniqid";
-import { StyledButton, SaveButton, StyledSaveIcon } from "../Button/style";
+import { SaveButton, StyledSaveIcon } from "../Button/style";
 
 const GeneralInfoForm = (props) => {
   const [errors, setErrors] = useState({
@@ -48,26 +42,16 @@ const GeneralInfoForm = (props) => {
       githubError = "Links must start with www, http,or https";
       isValid = false;
     }
-    // if (!github.trim().match(/[.]\w{2,3}$/)) {
-    //   githubError = "Links must end with a valid domain";
-    //   isValid = false;
-    // }
+
     if (!portfolio.trim().match(/^www\.|^http:|^https:/)) {
       portfolioError = "Links must start with www, http,or https";
       isValid = false;
     }
-    // if (!portfolio.trim().match(/[.]\w{2,3}$/)) {
-    //   portfolioError = "Links must end with a valid domain";
-    //   isValid = false;
-    // }
+
     if (!linkedIn.trim().match(/^www\.|^http:|^https:/)) {
       linkedInError = "Links must start with www, http,or https";
       isValid = false;
     }
-    // if (!linkedIn.trim().match(/[.]\w{2,3}$/)) {
-    //   linkedInError = "Links must end with a valid domain";
-    //   isValid = false;
-    // }
 
     setErrors({
       nameErr: nameError,
@@ -86,8 +70,7 @@ const GeneralInfoForm = (props) => {
     const copyOfGeneral = [...props.general];
     copyOfGeneral[0][name] = value;
     setGeneral([...copyOfGeneral]);
-    //use the spread operator to copy the old values into the state so the new values wont override
-    // setGeneral({ ...general, [name]: value });
+
     localStorage.setItem("generalList", JSON.stringify(general));
   };
 
