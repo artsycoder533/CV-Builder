@@ -1,12 +1,12 @@
 # CV Builder
 
 - [Description](#description)
-  - [Built With](#Built With)
+  - [Built With](#built-with)
   - [Screenshots](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
   - [Challenges](#challenges)
-  - [Installation Instructions](#installation)
+  - [Installation Instructions](#installation-instructions)
 - [Author](#author)
 
 ## Description
@@ -28,13 +28,13 @@ The CV Builder App is a Single Page Application that allows a user to enter deta
 
 - Live Site URL: [https://artsycoder533.github.io/CV-Builder/](https://artsycoder533.github.io/CV-Builder/)
 - Repository URL: [https://github.com/artsycoder533/CV-Builder.git](https://github.com/artsycoder533/CV-Builder.git)
-
+- Video Demo on Youtube: [https://youtu.be/S-ACy0H7a8s](https://youtu.be/S-ACy0H7a8s)
 
 ## My Process
 
 To start this project, I made a list of the parts of a typical CV and organized them into sections such as General Information, Education, Experience and Skills.  Once I had these sorted lists I then made a quick sketch of how I wanted the UI to look.  I came to the conclusion that it would be better to utilize a multi=step form rather than having one long form to fill out.  I figured that this way, it would not overwhelm the user.  I also decided I wanted a progress bar at the top so the user would know how close they were to completing all the steps.  Before I started coding, I thought about what variables I would need to hold in the state for each section along with what functions each section might need.  To implement the multi-step form, I would utilize a state variable called view, that would be used to conditionally render the UI based on the value of the view.  Once I started coding, I worked on the UI for each section at a time.  Once the UI was complete I then added event handlers and other functionality.  Once the basic functionality was complete, I then styled the UI using Styled Components.  After that I kept adding features such as form validation, local storage, custom scrollbar, progress bar functionality, and a control variable to handle enabling/disabling the buttons if the user has not successfully entered valid input in each field.  Along the way I added notes regarding challenges I faced, etc. to refresh my memory to aid in writing this readme.
 
-### Challenges I faced while building this project
+### Challenges 
 
 - **Problem**: How to handle the state of multiple inputs inside a single form?
 - **Solution**:  I utilized the name attribute for all inputs and used bracket notation to dynamically create and match the name of the event with the value in the onChange event handler.
