@@ -102,7 +102,7 @@ function App() {
 
   return (
     <section className="App">
-      {view > 3 ? "" : <Header view={view} />}
+      {view > 3 ? "" : <Header/>}
       {view > 3 ? "" : <ProgressBar view={view} />}
       <article>
         {view === 0 ? (

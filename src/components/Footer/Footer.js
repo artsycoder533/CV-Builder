@@ -44,9 +44,7 @@ const Footer = (props) => {
           <StyledButton onClick={prevView}>
             <StyledLeftIcon />
           </StyledButton>{" "}
-          <StyledButton onClick={resetCV}>
-            Reset CV
-          </StyledButton>
+          <StyledButton onClick={resetCV}>Reset CV</StyledButton>
         </React.Fragment>
       ) : (
         <React.Fragment>

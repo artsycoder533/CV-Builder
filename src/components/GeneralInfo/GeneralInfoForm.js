@@ -3,7 +3,6 @@ import DisplayInput from "../DisplayInput/DisplayInput";
 import { StyledFormWithScroll } from "../Form/style";
 import { Container, EntryWrapper, FormWrapper, StyledError } from "./style";
 import { StyledTitle } from "../Title/style";
-import uniqid from "uniqid";
 import { SaveButton, StyledSaveIcon } from "../Button/style";
 
 const GeneralInfoForm = (props) => {
@@ -79,23 +78,23 @@ const GeneralInfoForm = (props) => {
     const isValid = validateErrors();
     isValid ? props.setValid(true) : props.setValid(false);
   };
-  const resetForm = () => {
-    const reset = {
-      name: "",
-      email: "",
-      phone: "",
-      portfolio: "",
-      linkedIn: "",
-      github: "",
-      id: uniqid(),
-    };
-    setGeneral(reset);
-  };
+  // const resetForm = () => {
+  //   const reset = {
+  //     name: "",
+  //     email: "",
+  //     phone: "",
+  //     portfolio: "",
+  //     linkedIn: "",
+  //     github: "",
+  //     id: uniqid(),
+  //   };
+  //   setGeneral(reset);
+  // };
 
   const { general, setGeneral } = props;
   const { nameErr, phoneErr, emailErr, portfolioErr, githubErr, linkedInErr } =
     errors;
-  const { name, email, phone, portfolio, linkedIn, github, id } = general;
+  const { name, email, phone, portfolio, linkedIn, github} = general;
   return (
     <Container>
       <StyledTitle>General Info</StyledTitle>

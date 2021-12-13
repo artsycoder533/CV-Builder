@@ -1,21 +1,11 @@
-import React from 'react';
-import { Container, Title, StyledDownloadIcon } from './style';
-import { DownloadButton } from '../Button/style';
+import React from "react";
+import { Container, Title } from "./style";
 
-const Header = (props) => {
-    const { view } = props;
-    return (
-      <Container>
-        <Title>CV Builder</Title>
-        {/* {view === 4 ? (
-          <DownloadButton className="hide" onClick={() => window.print()}>
-            {" "}
-            <StyledDownloadIcon />
-          </DownloadButton>
-        ) : (
-          ""
-        )} */}
-      </Container>
-    );
-}
+const Header = () => {
+  return (
+    <Container>
+      <Title>CV Builder</Title>
+    </Container>
+  );
+};
 export default Header;
