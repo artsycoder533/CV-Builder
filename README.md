@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# CV Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+
+The CV Builder App is a Single Page Application that allows a user to enter details and create a printable/downloable formatted resume.  This app utilizes a multi-step form to input user information, a custom progress bar to indicate which step the user is in the process, and local storage to save the information until a user chooses to clear the data.  This app solves the problem of not knowing how to format a resume, as well as not knowing what information should be included in a resume.
+
+## Built With
+- React
+- Styled Components
+- React-To-Print
+- Local Storage
+
+## Challenges I faced while building this project
+
+- **Problem**: How to handle the state of multiple inputs inside a single form?
+- **Solution**:  I utilized the name attribute for all inputs and used bracket notation to dynamically create and match the name of the event with the value in the onChange event handler.
+
+- **Problem**: How to only validate current form entry?
+- **Solution**:  I added a state variable called currentEntry that represented the index of the entry the user has just typed in in.  Once the user presses the Save button, the index of that entry is passed as a parameter to the onSubmit event handler.  Inside the onSubmit event hander is a function call to the validate method.  The index is also passed to the validate method which tells the function which entry to check for validation.  In the render function, the currentEntry state variable is compared against the index of the entry.  If a match, only that entry will display error messages under the input fields.
+
+- **Problem**:  How to handle dynamic radio buttons with the same name attribute?
+- **Solution**:  Since radio buttons that have the same name attribute all belong to the same group.  When I had duplicate entries, its only allowed one set of radio buttons to be selected.  To fix this, I used a template string for the name attribute and appended the index after the actual name attribute, so that each set of radio buttons would belong to their own group.  In the onChange function, I set a conditional so that if the event type is radio, the original name attribute is set to the value, which allows each individual entry forms radio buttons to all be selected.
+
 
 ## Available Scripts
+To run the project:
 
-In the project directory, you can run:
+- Click on Code in the Github respository
+- Click on SSH
+- Copy the link below, or press the copy button
+- In your terminal run:
+    - `git clone ctrl + v`
+    - Ctlr + v, will paste the copied link into the terminal
+    - press Enter
+- Type `npm install` 
+    - This will install needed dependencies for the project
+- Type `npm start `
+    - This will run the project in development mode
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
