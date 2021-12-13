@@ -1,6 +1,6 @@
 {
   "name": "cv-builder",
-  "homepage": "https://artsycoder533.github.io/CV-Builder/"
+  "homepage": "https://artsycoder533.github.io/CV-Builder/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
