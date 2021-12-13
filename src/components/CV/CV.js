@@ -62,7 +62,6 @@ const CV = (props) => {
           {experience.map((exp) => {
             const { title, company, startDate, endDate, employed, duties, id } =
               exp;
-            console.log(startDate);
             return (
               <React.Fragment key={id}>
                 <JobTitle>{title}</JobTitle>
