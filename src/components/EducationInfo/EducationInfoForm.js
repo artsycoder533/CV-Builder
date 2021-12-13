@@ -342,7 +342,8 @@ const EducationInfoForm = (props) => {
                     </SaveButton>
                     <AbsoluteTrashButton
                       type="button"
-                      onClick={() => deleteEntry(index)}>
+                      onClick={() => deleteEntry(index)}
+                      aria-label="delete entry button">
                       <StyledTrashIcon />
                     </AbsoluteTrashButton>
                   </React.Fragment>
@@ -353,7 +354,10 @@ const EducationInfoForm = (props) => {
         </StyledFormWithScroll>
       </FormWrapper>
       {valid === true ? (
-        <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
+        <AbsoluteIconButton
+          type="button"
+          onClick={() => addNewEntry()}
+          aria-label="add new entry button">
           <StyledAddIcon />
         </AbsoluteIconButton>
       ) : (
