@@ -9,7 +9,6 @@ export const Container = styled.div`
   padding: 1rem 0;
   height: 80px;
   position: fixed;
-  /* position: relative; */
   top: 75px;
   left: 0;
   background: white;
@@ -27,8 +26,6 @@ export const Circle = styled.div`
   border-radius: 50%;
   font-size: 25px;
   font-weight: bold;
-  /* background: blue;
-  color: white; */
   background: ${(props) => (props.current ? "blue" : "white")};
   color: ${(props) => (props.current ? "white" : "gray")};
   border: ${(props) => (props.current ? "none" : "2px solid gray")};
