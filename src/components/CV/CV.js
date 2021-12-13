@@ -31,11 +31,11 @@ const CV = (props) => {
   const { name, email, phone, portfolio, linkedIn, github } = general[0];
   return (
     <Wrapper>
-      <PrintButton onClick={handlePrint} className="print__button">
+      <PrintButton onClick={handlePrint}>
         {" "}
         Print <StyledPrintIcon />{" "}
       </PrintButton>
-      <Container ref={componentRef} className="cv">
+      <Container ref={componentRef}>
         <StyledTitle>{name}</StyledTitle>
         <br />
         <HeaderSection>
@@ -56,7 +56,7 @@ const CV = (props) => {
             <FiGithub /> {github}
           </span>
         </HeaderSection>
-        <div className="experience">
+        <div>
           <StyledSectionTitle>Experience</StyledSectionTitle>
 
           {experience.map((exp) => {
@@ -83,7 +83,7 @@ const CV = (props) => {
             );
           })}
         </div>
-        <div className="education">
+        <div>
           <StyledSectionTitle>Education</StyledSectionTitle>
           {education.map((ed) => {
             const {
@@ -137,7 +137,7 @@ const CV = (props) => {
             );
           })}
         </div>
-        <div className="skills">
+        <div>
           <StyledSectionTitle>Skills</StyledSectionTitle>
           <List>
             {skills.map((skill) => {
