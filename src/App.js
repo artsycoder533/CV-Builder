@@ -11,46 +11,56 @@ import ExperienceInfoForm from "./components/ExperienceInfo/ExperienceInfoForm";
 import SkillsInfoForm from "./components/SkillsInfo/SkillsInfoForm";
 
 function App() {
-  //state variables
-  const [general, setGeneral] = useState(JSON.parse(localStorage.getItem("generalList")) || [{
-    name: "",
-    email: "",
-    phone: "",
-    portfolio: "",
-    linkedIn: "",
-    github: "",
-    id: uniqid()
-  }]);
-  const [education, setEducation] = useState(JSON.parse(localStorage.getItem("educationList")) || [
-    {
-      school: "",
-      major: "",
-      startDate: "",
-      endDate: "",
-      gpa: "",
-      minor: "",
-      attending: "",
-      graduate: "",
-      degree: "",
-      designation: "",
-      id: uniqid(),
-    },
-  ]);
-  const [experience, setExperience] = useState(JSON.parse(localStorage.getItem("experienceList")) || [
-    {
-      title: "",
-      company: "",
-      startDate: "",
-      endDate: "",
-      employed: "",
-      duties: "",
-      id: uniqid(),
-    },
-  ]);
-  const [skills, setSkills] = useState(JSON.parse(localStorage.getItem("skillList")) || [""]);
+  const [general, setGeneral] = useState(
+    JSON.parse(localStorage.getItem("generalList")) || [
+      {
+        name: "",
+        email: "",
+        phone: "",
+        portfolio: "",
+        linkedIn: "",
+        github: "",
+        id: uniqid(),
+      },
+    ]
+  );
+  const [education, setEducation] = useState(
+    JSON.parse(localStorage.getItem("educationList")) || [
+      {
+        school: "",
+        major: "",
+        startDate: "",
+        endDate: "",
+        gpa: "",
+        minor: "",
+        attending: "",
+        graduate: "",
+        degree: "",
+        designation: "",
+        id: uniqid(),
+      },
+    ]
+  );
+  const [experience, setExperience] = useState(
+    JSON.parse(localStorage.getItem("experienceList")) || [
+      {
+        title: "",
+        company: "",
+        startDate: "",
+        endDate: "",
+        employed: "",
+        duties: "",
+        id: uniqid(),
+      },
+    ]
+  );
+  const [skills, setSkills] = useState(
+    JSON.parse(localStorage.getItem("skillList")) || [""]
+  );
   const [view, setView] = useState(Number(localStorage.getItem("view")) || 0);
-  const [valid, setValid] = useState(Boolean(JSON.parse(localStorage.getItem("valid"))) || false);
-  //add a valid variable for every form so that you dont have to keep clicking save if you go back
+  const [valid, setValid] = useState(
+    Boolean(JSON.parse(localStorage.getItem("valid"))) || false
+  );
 
   useEffect(() => {
     localStorage.setItem("educationList", JSON.stringify(education));
@@ -66,13 +76,12 @@ function App() {
   }, [skills]);
   useEffect(() => {
     console.log("valid changed");
-  localStorage.setItem("valid", JSON.stringify(valid));
-});
+    localStorage.setItem("valid", JSON.stringify(valid));
+  });
   useEffect(() => {
     localStorage.setItem("view", view);
   });
 
-  //functions
   const generateCV = () => {
     setView(view + 1);
   };
@@ -82,12 +91,10 @@ function App() {
     if (view >= 3) {
       setView(4);
       setValid(true);
-    }
-    else  {
+    } else {
       setView(view + 1);
       setValid(false);
     }
-    
   };
 
   const prevView = (e) => {
@@ -98,21 +105,46 @@ function App() {
 
   const resetCV = () => {
     localStorage.clear();
-  }
+  };
 
   return (
     <section className="App">
-      {view > 3 ? "" : <Header/>}
+      {view > 3 ? "" : <Header />}
       {view > 3 ? "" : <ProgressBar view={view} />}
       <article>
         {view === 0 ? (
-          <GeneralInfoForm general={general} setGeneral={setGeneral} setValid={setValid}/>
+          <GeneralInfoForm
+            general={general}
+            setGeneral={setGeneral}
+            setValid={setValid}
+          />
         ) : view === 1 ? (
-            <div><EducationInfoForm education={education} setEducation={setEducation} valid={valid} setValid={setValid}/></div>
+          <div>
+            <EducationInfoForm
+              education={education}
+              setEducation={setEducation}
+              valid={valid}
+              setValid={setValid}
+            />
+          </div>
         ) : view === 2 ? (
-              <div><ExperienceInfoForm experience={experience} setExperience={setExperience} valid={valid} setValid={setValid}/></div>
+          <div>
+            <ExperienceInfoForm
+              experience={experience}
+              setExperience={setExperience}
+              valid={valid}
+              setValid={setValid}
+            />
+          </div>
         ) : view === 3 ? (
-                <div><SkillsInfoForm skills={skills} setSkills={setSkills} setValid={setValid} valid={valid}/></div>
+          <div>
+            <SkillsInfoForm
+              skills={skills}
+              setSkills={setSkills}
+              setValid={setValid}
+              valid={valid}
+            />
+          </div>
         ) : (
           <div>
             <CV
