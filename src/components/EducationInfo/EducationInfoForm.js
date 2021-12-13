@@ -36,19 +36,21 @@ const EducationInfoForm = (props) => {
     "Arts",
   ]);
 
+  const [currentEntry, setCurrentEntry] = useState(0);
+
   const [errors, setErrors] = useState({
     schoolErr: "",
     majorErr: "",
     dateStartedErr: "",
     degreeErr: "",
-    designationErr: ""
-    
+    designationErr: "",
   });
 
   const handleSubmit = (e, index) => {
     e.preventDefault();
     const isValid = validateErrors(index);
     isValid ? props.setValid(true) : props.setValid(false);
+    setCurrentEntry(index);
   };
 
   const handleInput = (e, index) => {
@@ -70,11 +72,15 @@ const EducationInfoForm = (props) => {
     const copyOfState = [...props.education];
     copyOfState.splice(index, 1);
     props.setEducation(copyOfState);
+    // if (currentEntry > 0) {
+    //   setCurrentEntry(currentEntry - 1);
+    // }
+    
   };
 
   const addNewEntry = () => {
     const copyOfState = [...props.education];
-    copyOfState.unshift({
+    copyOfState.push({
       school: "",
       major: "",
       startDate: "",
@@ -88,35 +94,43 @@ const EducationInfoForm = (props) => {
       id: uniqid(),
     });
     props.setEducation(copyOfState);
+    // setCurrentEntry(currentEntry + 1);
+    props.setValid(false);
   };
 
   const validateErrors = (index) => {
-    let schoolError, majorError, startDateError, endDateError, degreeError;
+    let schoolError,
+      graduateError,
+      majorError,
+      startDateError,
+      endDateError,
+      degreeError;
     let isValid = true;
-    const { school, major, startDate, endDate, degree, attending, graduate } = education[index];
-     if (school.trim() === "" || school.match(/\d/)) {
-       schoolError = "School name must not be empty";
-       isValid = false;
+    const { school, major, startDate, endDate, degree, attending, graduate } =
+      education[index];
+    if (school.trim() === "" || school.match(/\d/)) {
+      schoolError = "School name must not be empty";
+      isValid = false;
     }
-     if (major.trim() === "" || major.match(/\d/)) {
-       majorError = "Major/course of study must not be empty";
-       isValid = false;
+    if (major.trim() === "" || major.match(/\d/)) {
+      majorError = "Major/course of study must not be empty";
+      isValid = false;
     }
-     if (startDate ==="") {
+    if (startDate === "") {
       startDateError = "Must select a start date";
-       isValid = false;
+      isValid = false;
     }
     if (attending !== true) {
       if (endDate === "") {
         endDateError = "Must select an end date";
         isValid = false;
       }
-      if (graduate !== true) {
-        endDateError = "Must choose graduation status";
+      if (!graduate) {
+        graduateError = "Must choose graduation status";
         isValid = false;
       }
     }
-     
+
     if (degree === "") {
       degreeError = "A degree must be selected";
       isValid = false;
@@ -126,14 +140,21 @@ const EducationInfoForm = (props) => {
       schoolErr: schoolError,
       startDateErr: startDateError,
       endDateErr: endDateError,
-      degreeErr: degreeError
+      degreeErr: degreeError,
+      graduateErr: graduateError,
     });
     return isValid;
   };
 
-
-  const { education } = props;
-  const { schoolErr, majorErr, startDateErr, endDateErr, degreeErr, graduateErr } = errors;
+  const { education, valid } = props;
+  const {
+    schoolErr,
+    majorErr,
+    startDateErr,
+    endDateErr,
+    degreeErr,
+    graduateErr,
+  } = errors;
   return (
     <Container>
       <StyledTitle>Education</StyledTitle>
@@ -170,7 +191,11 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  <StyledError>{schoolErr}</StyledError>
+                  {currentEntry === index ? (
+                    <StyledError>{schoolErr}</StyledError>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div>
                   <DisplayInput
@@ -183,7 +208,11 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  <StyledError>{majorErr}</StyledError>
+                  {currentEntry === index ? (
+                    <StyledError>{majorErr}</StyledError>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <DisplayInput
                   label="Minor"
@@ -217,7 +246,7 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  <StyledError>{startDateErr}</StyledError>
+                  {currentEntry === index ? <StyledError>{startDateErr}</StyledError> : ""}
                 </div>
                 {attending === true ? (
                   ""
@@ -232,7 +261,7 @@ const EducationInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
-                    <StyledError>{endDateErr}</StyledError>
+                    {currentEntry === index ? <StyledError>{endDateErr}</StyledError>: ""}
                   </div>
                 )}
 
@@ -248,16 +277,17 @@ const EducationInfoForm = (props) => {
                     id={id}
                   />
                 ) : (
-                  <div className="radios">
+                  <div>
                     <DisplayRadio
                       label="Yes"
                       name={`graduate${index}`}
                       graduate={graduate}
+                        // value={graduate}
                       handleInput={handleInput}
                       index={index}
                       id={id}
                     />
-                    <StyledError>{graduateErr}</StyledError>
+                    {currentEntry===index? <StyledError>{graduateErr}</StyledError>: ""}
                   </div>
                 )}
                 {graduate === "No" ? (
@@ -274,7 +304,7 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
-                      <small style={{ color: "red" }}>{degreeErr}</small>
+                        {currentEntry === index ? <StyledError>{degreeErr}</StyledError> : ""}
                     </div>
                     <div>
                       <DisplaySelect
@@ -287,32 +317,41 @@ const EducationInfoForm = (props) => {
                         id={id}
                       />
                     </div>
+                  </React.Fragment>
+                )}
+
+                {index === 0 ? (
+                  <SaveButton
+                    type="submit"
+                    onClick={(e) => handleSubmit(e, index)}>
+                    Save <StyledSaveIcon />
+                  </SaveButton>
+                ) : (
+                  <React.Fragment>
                     <SaveButton
                       type="submit"
                       onClick={(e) => handleSubmit(e, index)}>
                       Save <StyledSaveIcon />
                     </SaveButton>
+                    <AbsoluteTrashButton
+                      type="button"
+                      onClick={() => deleteEntry(index)}>
+                      <StyledTrashIcon />
+                    </AbsoluteTrashButton>
                   </React.Fragment>
-                )}
-
-                {index === 0 ? (
-                  ""
-                ) : (
-                  <AbsoluteTrashButton
-                    type="button"
-                    onClick={() => deleteEntry(index)}>
-                    <StyledTrashIcon />
-                  </AbsoluteTrashButton>
                 )}
               </EntryWrapper>
             );
           })}
-          
         </StyledFormWithScroll>
       </FormWrapper>
-      <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
-        <StyledAddIcon />
-      </AbsoluteIconButton>
+      {valid === true ? (
+        <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
+          <StyledAddIcon />
+        </AbsoluteIconButton>
+      ) : (
+        ""
+      )}
     </Container>
   );
 };

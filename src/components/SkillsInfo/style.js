@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SaveButton } from "../Button/style";
 
 export const Container = styled.div`
   width: 100%;
@@ -71,4 +72,10 @@ export const StyledError = styled.small`
   color: red;
   font-weight: bold;
   transition: 0.3ms all ease-in-out;
+`;
+
+export const SaveButton2 = styled(SaveButton)`
+position: relative;
+right: 0;
+
 `;

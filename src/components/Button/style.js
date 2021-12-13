@@ -62,7 +62,7 @@ export const AbsoluteIconButton = styled(StyledButton)`
 
 export const AbsoluteTrashButton = styled(IconButton)`
   position: absolute;
-  right: 60px;
+  right: 10px;
   padding: 1rem;
 `;
 
@@ -95,8 +95,7 @@ export const SaveButton = styled(StyledButton)`
   background: red;
   color: white;
   position: absolute;
-  top: 0px;
-  right: 10px;
+  right: 60px; 
   padding: 0.5rem;
 `;
 

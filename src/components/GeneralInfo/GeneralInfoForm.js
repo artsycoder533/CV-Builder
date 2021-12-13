@@ -189,12 +189,12 @@ const GeneralInfoForm = (props) => {
               />
               <StyledError>{githubErr}</StyledError>
             </div>
+            <SaveButton type="submit" onClick={handleSubmit}>
+              Save <StyledSaveIcon />
+            </SaveButton>
           </EntryWrapper>
         </StyledFormWithScroll>
       </FormWrapper>
-      <SaveButton type="submit" onClick={handleSubmit}>
-        Save <StyledSaveIcon />
-      </SaveButton>
     </Container>
   );
 };

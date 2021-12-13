@@ -7,7 +7,8 @@ import {
   SkillsForm,
     StyledFormWithScroll,
   EntryWrapper,
-  StyledError
+  StyledError,
+  SaveButton2
 } from "./style";
 import {
   AbsoluteIconButton,
@@ -15,14 +16,16 @@ import {
   AbsoluteTrashButton,
   IconButton,
   PlainButton,
+  SaveButton,
+  StyledSaveIcon,
   StyledTrashIcon,
 } from "../Button/style";
 import { StyledAddIcon } from "../EducationInfo/style";
 import uniqid from 'uniqid';
 
 const SkillsInfoForm = (props) => {
-  const { skills, setSkills } = props;
-
+  const { skills, setSkills, valid, setValid } = props;
+  const [currentEntry, setCurrentEntry] = useState(0);
   const [errors, setErrors] = useState({
     skillErr: ""
   });
@@ -30,7 +33,7 @@ const SkillsInfoForm = (props) => {
   const validateErrors = (index) => {
     let skillError;
     let isValid = true;
-    const { skill } = skill[index];
+    const skill  = skills[index];
     if (skill.trim() === "") {
      skillError = "Skill must not be blank";
       isValid = false;
@@ -45,7 +48,10 @@ const SkillsInfoForm = (props) => {
     e.preventDefault();
     const isValid = validateErrors(index);
     isValid ? props.setValid(true) : props.setValid(false);
+    setCurrentEntry(index);
+    localStorage.setItem("skillList", JSON.stringify(skills));
   }
+
   const handleInput = (e, index) => {
     e.preventDefault();
       const copyOfState = [...skills];
@@ -63,6 +69,7 @@ const SkillsInfoForm = (props) => {
       const copyOfState = [...skills];
       copyOfState.push("");
       setSkills(copyOfState);
+      setValid(false);
     }
 
   const { skillErr } = errors;
@@ -86,8 +93,13 @@ const SkillsInfoForm = (props) => {
                         handleInput={handleInput}
                         index={index}
                       />
-                      <StyledError>{skillErr}</StyledError>
+                      {currentEntry === index ? <StyledError>{skillErr}</StyledError> : ""}
                     </div>
+                    <SaveButton2
+                      type="submit"
+                      onClick={(e) => handleSubmit(e, index)}>
+                      Save <StyledSaveIcon />
+                    </SaveButton2>
                     <AbsoluteSkillsTrashButton
                       type="button"
                       onClick={() => deleteEntry(index)}>
@@ -99,9 +111,9 @@ const SkillsInfoForm = (props) => {
             )}
           </StyledFormWithScroll>
         </FormWrapper>
-        <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
+        {valid === true ? <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
           <StyledAddIcon />
-        </AbsoluteIconButton>
+        </AbsoluteIconButton> : ""}
       </Container>
     );
 }

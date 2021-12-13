@@ -25,6 +25,8 @@ const ExperienceInfoForm = (props) => {
       dutiesErr: "",
     });
   
+  const [currentEntry, setCurrentEntry] = useState(0);
+
   const validateErrors = (index) => {
     let titleError, companyError, startDateError, endDateError, dutiesError;
     let isValid = true;
@@ -75,6 +77,7 @@ const ExperienceInfoForm = (props) => {
 
   const handleSubmit = (e, index) => {
     e.preventDefault();
+    setCurrentEntry(index);
     const isValid = validateErrors(index);
     isValid ? props.setValid(true) : props.setValid(false);
   }
@@ -82,7 +85,10 @@ const ExperienceInfoForm = (props) => {
     const deleteEntry = (index) => {
         const copyOfState = [...experience];
         copyOfState.splice(index, 1);
-        props.setExperience(copyOfState);
+      props.setExperience(copyOfState);
+      // if (currentEntry > 0) {
+      //   setCurrentEntry(currentEntry - 1);
+      // }
     }
 
     const addNewEntry = () => {
@@ -96,10 +102,12 @@ const ExperienceInfoForm = (props) => {
       duties: "",
       id: uniqid(),
         });
-        props.setExperience(copyOfState);
+      props.setExperience(copyOfState);
+      props.setValid(false);
+      // setCurrentEntry(currentEntry + 1);
     }
 
-  const { experience } = props;
+  const { experience, valid } = props;
   const { titleErr, companyErr, startDateErr, endDateErr, dutiesErr } = errors;
     return (
       <Container>
@@ -129,7 +137,7 @@ const ExperienceInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
-                    <StyledError>{titleErr}</StyledError>
+                    {currentEntry === index ? <StyledError>{titleErr}</StyledError> : ""}
                   </div>
                   <div>
                     <DisplayInput
@@ -142,7 +150,7 @@ const ExperienceInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
-                    <StyledError>{companyErr}</StyledError>
+                    {currentEntry === index ? <StyledError>{companyErr}</StyledError> : ""}
                   </div>
                   <DisplayCheckbox
                     label="Check if still employed"
@@ -162,7 +170,7 @@ const ExperienceInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
-                    <StyledError>{startDateErr}</StyledError>
+                    {currentEntry === index ? <StyledError>{startDateErr}</StyledError> : ""}
                   </div>
                   {employed ? (
                     ""
@@ -178,7 +186,7 @@ const ExperienceInfoForm = (props) => {
                           index={index}
                           id={id}
                         />
-                        <StyledError>{endDateErr}</StyledError>
+                          {currentEntry === index ? <StyledError>{endDateErr}</StyledError> : ""}
                       </div>
                     </React.Fragment>
                   )}
@@ -194,7 +202,7 @@ const ExperienceInfoForm = (props) => {
                       index={index}
                       handleInput={handleInput}
                     />
-                    <StyledError>{dutiesErr}</StyledError>
+                    {currentEntry === index ? <StyledError>{dutiesErr}</StyledError> : ""}
                   </div>
                   <SaveButton
                     type="submit"
@@ -215,9 +223,9 @@ const ExperienceInfoForm = (props) => {
             })}
           </StyledFormWithScroll>
         </FormWrapper>
-        <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
+        {valid === true ? <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
           <StyledAddIcon />
-        </AbsoluteIconButton>
+        </AbsoluteIconButton> : ""}
       </Container>
     );
 }

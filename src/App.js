@@ -47,9 +47,9 @@ function App() {
       id: uniqid(),
     },
   ]);
-  const [skills, setSkills] = useState([""]);
+  const [skills, setSkills] = useState(JSON.parse(localStorage.getItem("skillList")) || [""]);
   const [view, setView] = useState(Number(localStorage.getItem("view")) || 0);
-  const [valid, setValid] = useState(localStorage.getItem("valid") || false);
+  const [valid, setValid] = useState(Boolean(JSON.parse(localStorage.getItem("valid"))) || false);
   //add a valid variable for every form so that you dont have to keep clicking save if you go back
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function App() {
   }, [skills]);
   useEffect(() => {
     console.log("valid changed");
-  localStorage.setItem("valid", valid);
+  localStorage.setItem("valid", JSON.stringify(valid));
 });
   useEffect(() => {
     localStorage.setItem("view", view);
@@ -74,20 +74,26 @@ function App() {
 
   //functions
   const generateCV = () => {
-    setView(Number(view) + 1);
+    setView(view + 1);
   };
 
   const nextView = (e) => {
     e.preventDefault();
-    if (view === 4) return;
-    setView(Number(view) + 1);
-    setValid(false);
+    if (view >= 3) {
+      setView(4);
+      setValid(true);
+    }
+    else  {
+      setView(view + 1);
+      setValid(false);
+    }
+    
   };
 
   const prevView = (e) => {
     e.preventDefault();
     if (view === 0) return;
-    setView(Number(view) - 1);
+    setView(view - 1);
   };
 
   return (
@@ -98,11 +104,11 @@ function App() {
         {view === 0 ? (
           <GeneralInfoForm general={general} setGeneral={setGeneral} setValid={setValid}/>
         ) : view === 1 ? (
-            <div><EducationInfoForm education={education} setEducation={setEducation} setValid={setValid}/></div>
+            <div><EducationInfoForm education={education} setEducation={setEducation} valid={valid} setValid={setValid}/></div>
         ) : view === 2 ? (
-              <div><ExperienceInfoForm experience={experience} setExperience={setExperience} setValid={setValid}/></div>
+              <div><ExperienceInfoForm experience={experience} setExperience={setExperience} valid={valid} setValid={setValid}/></div>
         ) : view === 3 ? (
-                <div><SkillsInfoForm skills={skills} setSkills={setSkills} setValid={setValid}/></div>
+                <div><SkillsInfoForm skills={skills} setSkills={setSkills} setValid={setValid} valid={valid}/></div>
         ) : (
           <div>
             <CV

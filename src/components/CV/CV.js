@@ -20,6 +20,7 @@ import {
   StyledPrintIcon,
 } from "./style";
 import { StyledButton } from "../Button/style";
+import uniqid from 'uniqid';
 
 const CV = (props) => {
   const componentRef = useRef();
@@ -27,7 +28,7 @@ const CV = (props) => {
     content: () => componentRef.current
   });
     const { general, education, experience, skills } = props;
-     const { name, email, phone, portfolio, linkedIn, github } = general;
+  const { name, email, phone, portfolio, linkedIn, github } = general[0];
   return (
     <React.Fragment>
       <StyledButton onClick={handlePrint} className="print__button">
@@ -45,7 +46,7 @@ const CV = (props) => {
             <FiMail /> {email}
           </span>{" "}
           <span>
-            <FiExternalLink /> {portfolio}
+             <FiExternalLink /> {portfolio} 
           </span>{" "}
           <span>
             {" "}
@@ -145,7 +146,7 @@ const CV = (props) => {
           <List>
             {skills.map((skill) => {
               return (
-                <React.Fragment>
+                <React.Fragment key={uniqid()}>
                   <li> {skill.toUpperCase()} </li>
                 </React.Fragment>
               );
