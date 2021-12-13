@@ -9,7 +9,6 @@ import { StyledButton, StyledDisabledButton } from "../Button/style";
 
 const Footer = (props) => {
   const { prevView, nextView, view, valid, resetCV } = props;
-  console.log(valid, typeof valid);
   return (
     <StyledFooter>
       {valid !== true ? (

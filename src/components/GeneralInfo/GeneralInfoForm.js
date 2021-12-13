@@ -78,18 +78,6 @@ const GeneralInfoForm = (props) => {
     const isValid = validateErrors();
     isValid ? props.setValid(true) : props.setValid(false);
   };
-  // const resetForm = () => {
-  //   const reset = {
-  //     name: "",
-  //     email: "",
-  //     phone: "",
-  //     portfolio: "",
-  //     linkedIn: "",
-  //     github: "",
-  //     id: uniqid(),
-  //   };
-  //   setGeneral(reset);
-  // };
 
   const { general, setGeneral } = props;
   const { nameErr, phoneErr, emailErr, portfolioErr, githubErr, linkedInErr } =

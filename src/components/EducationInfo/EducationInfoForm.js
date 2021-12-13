@@ -60,7 +60,7 @@ const EducationInfoForm = (props) => {
       ? (entry[name] = e.currentTarget.checked)
       : (entry[name] = value);
 
-    type === "radio" ? (entry.graduate = value) : (entry.graduate = "");
+    type === "radio" ? (entry["graduate"] = value) : (entry["graduate"] = "");
     props.setEducation([...copyOfEducation]);
   };
 
@@ -111,12 +111,12 @@ const EducationInfoForm = (props) => {
       startDateError = "Must select a start date";
       isValid = false;
     }
-    if (attending !== true) {
+    if (attending === "") {
       if (endDate === "") {
         endDateError = "Must select an end date";
         isValid = false;
       }
-      if (!graduate) {
+      if (graduate === "") {
         graduateError = "Must choose graduation status";
         isValid = false;
       }

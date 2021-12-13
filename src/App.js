@@ -75,7 +75,6 @@ function App() {
     localStorage.setItem("skillList", JSON.stringify(skills));
   }, [skills]);
   useEffect(() => {
-    console.log("valid changed");
     localStorage.setItem("valid", JSON.stringify(valid));
   });
   useEffect(() => {
@@ -105,6 +104,41 @@ function App() {
 
   const resetCV = () => {
     localStorage.clear();
+    //reset all state values
+    setGeneral({
+      name: "",
+      email: "",
+      phone: "",
+      portfolio: "",
+      linkedIn: "",
+      github: "",
+      id: uniqid(),
+    });
+    setEducation({
+      school: "",
+      major: "",
+      startDate: "",
+      endDate: "",
+      gpa: "",
+      minor: "",
+      attending: "",
+      graduate: "",
+      degree: "",
+      designation: "",
+      id: uniqid(),
+    });
+    setExperience({
+      title: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      employed: "",
+      duties: "",
+      id: uniqid(),
+    });
+    setSkills([""]);
+    setView(0);
+    setValid(false);
   };
 
   return (
