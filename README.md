@@ -11,7 +11,7 @@
 
 ## Description
 
-The CV Builder App is a Single Page Application that allows a user to enter details and create a printable/downloable formatted resume.  This app utilizes a multi-step form to input user information, a custom progress bar to indicate which step the user is in the process, and local storage to save the information until a user chooses to clear the data.  This app solves the problem of not knowing how to format a resume, as well as not knowing what information should be included in a resume.
+CV Builder is a Single Page Application that allows a user to input details and then creates a formatted resume to be printed or saved as a pdf.  This app utilizes a multi-step form to input user information, a custom progress bar to indicate which step the user is in the process, and local storage to save the information until a user chooses to clear the data. This app solves the problem of not knowing how to format a resume, as well as not knowing what information should be included in a resume.
 
 ### Built With
 - React
