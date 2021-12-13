@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FiDownload } from "react-icons/fi";
+import { FiDownload, FiTool } from "react-icons/fi";
 
 export const Container = styled.header`
   height: 75px;
@@ -23,9 +23,15 @@ export const Title = styled.h1`
   font-size: 3rem;
   letter-spacing: 3px;
   font-family: "Staatliches", cursive;
+  display: flex;
+  align-items: center;
 `;
 
 export const StyledDownloadIcon = styled(FiDownload)`
   font-size: 2rem;
   font-weight: bold;
+`;
+
+export const StyledLogo = styled(FiTool)`
+  color: red;
 `;

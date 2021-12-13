@@ -10,17 +10,10 @@
   background: rgb(243, 243, 243);
 }
 
-
-/* @media print {
-  .hide {
-    display: none;
-  }
-} */
-
 /* width */
 ::-webkit-scrollbar {
   width: 20px;
-  
+
   @media print {
     display: none;
   }
@@ -42,4 +35,3 @@
     display: none;
   }
 }
-

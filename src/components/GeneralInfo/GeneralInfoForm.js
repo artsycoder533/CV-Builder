@@ -82,7 +82,7 @@ const GeneralInfoForm = (props) => {
   const { general, setGeneral } = props;
   const { nameErr, phoneErr, emailErr, portfolioErr, githubErr, linkedInErr } =
     errors;
-  const { name, email, phone, portfolio, linkedIn, github} = general;
+  const { name, email, phone, portfolio, linkedIn, github } = general;
   return (
     <Container>
       <StyledTitle>General Info</StyledTitle>

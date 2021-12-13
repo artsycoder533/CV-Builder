@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Title } from "./style";
+import { Container, Title, StyledLogo } from "./style";
 
 const Header = () => {
   return (
     <Container>
-      <Title>CV Builder</Title>
+      <Title>CV Builder <StyledLogo/></Title>
     </Container>
   );
 };
