@@ -35,13 +35,6 @@ export const StyledAddIcon = styled(FiPlus)`
   font-weight: bold;
 `;
 
-export const StyledWrapper = styled.div`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  flex-wrap: wrap; */
-`;
-
 export const StyledError = styled.small`
   color: red;
   font-weight: bold;

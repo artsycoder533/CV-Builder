@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DisplayInput from "../DisplayInput/DisplayInput";
 import DisplayRadio from "../DisplayRadio/DisplayRadio";
 import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
@@ -6,22 +6,19 @@ import DisplaySelect from "../DisplaySelect/DisplaySelect";
 import {
   AbsoluteIconButton,
   AbsoluteTrashButton,
-  IconButton,
   SaveButton,
   StyledSaveIcon,
   StyledTrashIcon,
 } from "../Button/style";
 import uniqid from "uniqid";
 import {
-  ButtonWrapper,
   Container,
   EntryWrapper,
   StyledAddIcon,
   FormWrapper,
-  StyledWrapper,
   StyledError,
 } from "./style";
-import { EducationForm, StyledForm, StyledFormWithScroll } from "../Form/style";
+import { StyledFormWithScroll } from "../Form/style";
 import { StyledTitle } from "../Title/style";
 
 const EducationInfoForm = (props) => {
@@ -65,17 +62,12 @@ const EducationInfoForm = (props) => {
 
     type === "radio" ? (entry.graduate = value) : (entry.graduate = "");
     props.setEducation([...copyOfEducation]);
-    //add to local storage
   };
 
   const deleteEntry = (index) => {
     const copyOfState = [...props.education];
     copyOfState.splice(index, 1);
     props.setEducation(copyOfState);
-    // if (currentEntry > 0) {
-    //   setCurrentEntry(currentEntry - 1);
-    // }
-    
   };
 
   const addNewEntry = () => {
@@ -94,7 +86,6 @@ const EducationInfoForm = (props) => {
       id: uniqid(),
     });
     props.setEducation(copyOfState);
-    // setCurrentEntry(currentEntry + 1);
     props.setValid(false);
   };
 
@@ -246,7 +237,11 @@ const EducationInfoForm = (props) => {
                     index={index}
                     id={id}
                   />
-                  {currentEntry === index ? <StyledError>{startDateErr}</StyledError> : ""}
+                  {currentEntry === index ? (
+                    <StyledError>{startDateErr}</StyledError>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 {attending === true ? (
                   ""
@@ -261,7 +256,11 @@ const EducationInfoForm = (props) => {
                       index={index}
                       id={id}
                     />
-                    {currentEntry === index ? <StyledError>{endDateErr}</StyledError>: ""}
+                    {currentEntry === index ? (
+                      <StyledError>{endDateErr}</StyledError>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 )}
 
@@ -282,12 +281,16 @@ const EducationInfoForm = (props) => {
                       label="Yes"
                       name={`graduate${index}`}
                       graduate={graduate}
-                        // value={graduate}
+                      // value={graduate}
                       handleInput={handleInput}
                       index={index}
                       id={id}
                     />
-                    {currentEntry===index? <StyledError>{graduateErr}</StyledError>: ""}
+                    {currentEntry === index ? (
+                      <StyledError>{graduateErr}</StyledError>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 )}
                 {graduate === "No" ? (
@@ -304,7 +307,11 @@ const EducationInfoForm = (props) => {
                         index={index}
                         id={id}
                       />
-                        {currentEntry === index ? <StyledError>{degreeErr}</StyledError> : ""}
+                      {currentEntry === index ? (
+                        <StyledError>{degreeErr}</StyledError>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div>
                       <DisplaySelect
