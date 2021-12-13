@@ -21,7 +21,6 @@ export const EntryWrapper = styled.div`
   border-radius: 10px;
   padding: 1rem;
   background: white;
-  
 
   @media screen and (min-width: 992px) {
     grid-template-columns: 1fr 1fr;

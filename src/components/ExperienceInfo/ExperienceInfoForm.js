@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import DisplayInput from "../DisplayInput/DisplayInput";
 import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
 import DisplayTextarea from "../DisplayTextArea/DisplayTextArea";
@@ -16,21 +16,21 @@ import { StyledTitle } from "../Title/style";
 import { StyledAddIcon } from "../EducationInfo/style";
 
 const ExperienceInfoForm = (props) => {
+  const [errors, setErrors] = useState({
+    titleErr: "",
+    companyErr: "",
+    startDateErr: "",
+    endDateErr: "",
+    dutiesErr: "",
+  });
 
-    const [errors, setErrors] = useState({
-      titleErr: "",
-      companyErr: "",
-      startDateErr: "",
-      endDateErr: "",
-      dutiesErr: "",
-    });
-  
   const [currentEntry, setCurrentEntry] = useState(0);
 
   const validateErrors = (index) => {
     let titleError, companyError, startDateError, endDateError, dutiesError;
     let isValid = true;
-    const { title, company, startDate, endDate, duties, employed } = experience[index];
+    const { title, company, startDate, endDate, duties, employed } =
+      experience[index];
     if (title.trim() === "") {
       titleError = "Title must not be empty";
       isValid = false;
@@ -39,9 +39,9 @@ const ExperienceInfoForm = (props) => {
       companyError = "Company must not be empty";
       isValid = false;
     }
-      if (startDate === "") {
-        startDateError = "Must select a start date";
-        isValid = false;
+    if (startDate === "") {
+      startDateError = "Must select a start date";
+      isValid = false;
     }
     if (employed !== true) {
       if (endDate === "") {
@@ -61,39 +61,36 @@ const ExperienceInfoForm = (props) => {
       dutiesErr: dutiesError,
     });
     return isValid;
-  }
+  };
 
-    const handleInput = (e, index) => {
-        const copyOfState = [...experience];
-        let entry = copyOfState[index];
-        const name = e.currentTarget.name;
-        const value = e.currentTarget.value;
-        const type = e.currentTarget.type;
-        type === "checkbox"
-          ? (entry[name] = e.currentTarget.checked)
-            : (entry[name] = value);
-        props.setExperience(copyOfState);
-    }
+  const handleInput = (e, index) => {
+    const copyOfState = [...experience];
+    let entry = copyOfState[index];
+    const name = e.currentTarget.name;
+    const value = e.currentTarget.value;
+    const type = e.currentTarget.type;
+    type === "checkbox"
+      ? (entry[name] = e.currentTarget.checked)
+      : (entry[name] = value);
+    props.setExperience(copyOfState);
+  };
 
   const handleSubmit = (e, index) => {
     e.preventDefault();
     setCurrentEntry(index);
     const isValid = validateErrors(index);
     isValid ? props.setValid(true) : props.setValid(false);
-  }
+  };
 
-    const deleteEntry = (index) => {
-        const copyOfState = [...experience];
-        copyOfState.splice(index, 1);
-      props.setExperience(copyOfState);
-      // if (currentEntry > 0) {
-      //   setCurrentEntry(currentEntry - 1);
-      // }
-    }
+  const deleteEntry = (index) => {
+    const copyOfState = [...experience];
+    copyOfState.splice(index, 1);
+    props.setExperience(copyOfState);
+  };
 
-    const addNewEntry = () => {
-        const copyOfState = [...props.experience];
-        copyOfState.push({
+  const addNewEntry = () => {
+    const copyOfState = [...props.experience];
+    copyOfState.push({
       title: "",
       company: "",
       startDate: "",
@@ -101,133 +98,149 @@ const ExperienceInfoForm = (props) => {
       employed: "",
       duties: "",
       id: uniqid(),
-        });
-      props.setExperience(copyOfState);
-      props.setValid(false);
-      // setCurrentEntry(currentEntry + 1);
-    }
+    });
+    props.setExperience(copyOfState);
+    props.setValid(false);
+  };
 
   const { experience, valid } = props;
   const { titleErr, companyErr, startDateErr, endDateErr, dutiesErr } = errors;
-    return (
-      <Container>
-        <StyledTitle>Experience</StyledTitle>
-        <FormWrapper>
-          <StyledFormWithScroll action="">
-            {experience.map((entry, index) => {
-              const {
-                title,
-                company,
-                startDate,
-                endDate,
-                employed,
-                duties,
-                id,
-              } = entry;
-              return (
-                <EntryWrapper key={id}>
-                  <div>
-                    <DisplayInput
-                      label="Job Title"
-                      name="title"
-                      value={title}
-                      type="text"
-                      handleInput={handleInput}
-                      placeholder="enter job title"
-                      index={index}
-                      id={id}
-                    />
-                    {currentEntry === index ? <StyledError>{titleErr}</StyledError> : ""}
-                  </div>
-                  <div>
-                    <DisplayInput
-                      label="Company"
-                      name="company"
-                      value={company}
-                      type="text"
-                      handleInput={handleInput}
-                      placeholder="enter company name"
-                      index={index}
-                      id={id}
-                    />
-                    {currentEntry === index ? <StyledError>{companyErr}</StyledError> : ""}
-                  </div>
-                  <DisplayCheckbox
-                    label="Check if still employed"
-                    name="employed"
-                    value={employed}
+  return (
+    <Container>
+      <StyledTitle>Experience</StyledTitle>
+      <FormWrapper>
+        <StyledFormWithScroll action="">
+          {experience.map((entry, index) => {
+            const { title, company, startDate, endDate, employed, duties, id } =
+              entry;
+            return (
+              <EntryWrapper key={id}>
+                <div>
+                  <DisplayInput
+                    label="Job Title"
+                    name="title"
+                    value={title}
+                    type="text"
+                    handleInput={handleInput}
+                    placeholder="enter job title"
+                    index={index}
+                    id={id}
+                  />
+                  {currentEntry === index ? (
+                    <StyledError>{titleErr}</StyledError>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div>
+                  <DisplayInput
+                    label="Company"
+                    name="company"
+                    value={company}
+                    type="text"
+                    handleInput={handleInput}
+                    placeholder="enter company name"
+                    index={index}
+                    id={id}
+                  />
+                  {currentEntry === index ? (
+                    <StyledError>{companyErr}</StyledError>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <DisplayCheckbox
+                  label="Check if still employed"
+                  name="employed"
+                  value={employed}
+                  handleInput={handleInput}
+                  index={index}
+                  id={id}
+                />
+                <div>
+                  <DisplayInput
+                    label="Date Started"
+                    name="startDate"
+                    value={startDate}
+                    type="date"
                     handleInput={handleInput}
                     index={index}
                     id={id}
                   />
-                  <div>
-                    <DisplayInput
-                      label="Date Started"
-                      name="startDate"
-                      value={startDate}
-                      type="date"
-                      handleInput={handleInput}
-                      index={index}
-                      id={id}
-                    />
-                    {currentEntry === index ? <StyledError>{startDateErr}</StyledError> : ""}
-                  </div>
-                  {employed ? (
-                    ""
+                  {currentEntry === index ? (
+                    <StyledError>{startDateErr}</StyledError>
                   ) : (
-                    <React.Fragment>
-                      <div>
-                        <DisplayInput
-                          label="Date Ended"
-                          name="endDate"
-                          value={endDate}
-                          type="date"
-                          handleInput={handleInput}
-                          index={index}
-                          id={id}
-                        />
-                          {currentEntry === index ? <StyledError>{endDateErr}</StyledError> : ""}
-                      </div>
-                    </React.Fragment>
-                  )}
-                  <div>
-                    <DisplayTextarea
-                      type={"textarea"}
-                      label={"Duties"}
-                      placeholder="Enter job duties.  Try to keep it short."
-                      value={duties}
-                      name="duties"
-                      cols={20}
-                      rows={5}
-                      index={index}
-                      handleInput={handleInput}
-                    />
-                    {currentEntry === index ? <StyledError>{dutiesErr}</StyledError> : ""}
-                  </div>
-                  <SaveButton
-                    type="submit"
-                    onClick={(e) => handleSubmit(e, index)}>
-                    Save <StyledSaveIcon />
-                  </SaveButton>
-                  {index === 0 ? (
                     ""
-                  ) : (
-                    <AbsoluteTrashButton
-                      type="button"
-                      onClick={() => deleteEntry(index)}>
-                      <StyledTrashIcon />
-                    </AbsoluteTrashButton>
                   )}
-                </EntryWrapper>
-              );
-            })}
-          </StyledFormWithScroll>
-        </FormWrapper>
-        {valid === true ? <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
+                </div>
+                {employed ? (
+                  ""
+                ) : (
+                  <React.Fragment>
+                    <div>
+                      <DisplayInput
+                        label="Date Ended"
+                        name="endDate"
+                        value={endDate}
+                        type="date"
+                        handleInput={handleInput}
+                        index={index}
+                        id={id}
+                      />
+                      {currentEntry === index ? (
+                        <StyledError>{endDateErr}</StyledError>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </React.Fragment>
+                )}
+                <div>
+                  <DisplayTextarea
+                    type={"textarea"}
+                    label={"Duties"}
+                    placeholder="Enter job duties.  Try to keep it short."
+                    value={duties}
+                    name="duties"
+                    cols={20}
+                    rows={5}
+                    index={index}
+                    handleInput={handleInput}
+                  />
+                  {currentEntry === index ? (
+                    <StyledError>{dutiesErr}</StyledError>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <SaveButton
+                  type="submit"
+                  onClick={(e) => handleSubmit(e, index)}>
+                  Save <StyledSaveIcon />
+                </SaveButton>
+                {index === 0 ? (
+                  ""
+                ) : (
+                  <AbsoluteTrashButton
+                    type="button"
+                    onClick={() => deleteEntry(index)}>
+                    <StyledTrashIcon />
+                  </AbsoluteTrashButton>
+                )}
+              </EntryWrapper>
+            );
+          })}
+        </StyledFormWithScroll>
+      </FormWrapper>
+      {valid === true ? (
+        <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
           <StyledAddIcon />
-        </AbsoluteIconButton> : ""}
-      </Container>
-    );
-}
+        </AbsoluteIconButton>
+      ) : (
+        ""
+      )}
+    </Container>
+  );
+};
 
 export default ExperienceInfoForm;
