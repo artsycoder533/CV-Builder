@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useReactToPrint } from 'react-to-print';
+import { useReactToPrint } from "react-to-print";
 import {
   FiGithub,
   FiLinkedin,
@@ -18,22 +18,22 @@ import {
   Description,
   StyledPrintIcon,
   PrintButton,
-  Wrapper
+  Wrapper,
 } from "./style";
-import uniqid from 'uniqid';
+import uniqid from "uniqid";
 
 const CV = (props) => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
-    content: () => componentRef.current
+    content: () => componentRef.current,
   });
-    const { general, education, experience, skills } = props;
+  const { general, education, experience, skills } = props;
   const { name, email, phone, portfolio, linkedIn, github } = general[0];
   return (
     <Wrapper>
       <PrintButton onClick={handlePrint} className="print__button">
         {" "}
-        Print <StyledPrintIcon/>{" "}
+        Print <StyledPrintIcon />{" "}
       </PrintButton>
       <Container ref={componentRef} className="cv">
         <StyledTitle>{name}</StyledTitle>
@@ -46,7 +46,7 @@ const CV = (props) => {
             <FiMail /> {email}
           </span>{" "}
           <span>
-             <FiExternalLink /> {portfolio} 
+            <FiExternalLink /> {portfolio}
           </span>{" "}
           <span>
             {" "}

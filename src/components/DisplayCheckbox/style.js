@@ -15,6 +15,5 @@ export const Container = styled.div`
 
 export const StyledLabel = styled.label`
   font-size: 1.1rem;
-  /* padding: 1rem 0; */
   font-family: "Poppins", sans-serif;
 `;
