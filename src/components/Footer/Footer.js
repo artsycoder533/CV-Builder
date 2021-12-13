@@ -39,9 +39,11 @@ const Footer = (props) => {
             Generate <StyledSendIcon />
           </StyledButton>
         </React.Fragment>
-      ) : view === 4 ? <StyledButton onClick={prevView}>
-            <StyledLeftIcon />
-          </StyledButton> :(
+      ) : view === 4 ? (
+        <StyledButton onClick={prevView}>
+          <StyledLeftIcon />
+        </StyledButton>
+      ) : (
         <React.Fragment>
           <StyledButton onClick={prevView}>
             <StyledLeftIcon />
