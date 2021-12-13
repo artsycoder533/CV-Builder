@@ -13,25 +13,34 @@ const Footer = (props) => {
     <StyledFooter>
       {valid !== true ? (
         <React.Fragment>
-          <StyledDisabledButton disabled onClick={prevView}>
+          <StyledDisabledButton
+            disabled
+            onClick={prevView}
+            aria-label="previous section button">
             <StyledLeftIcon />
           </StyledDisabledButton>
-          <StyledDisabledButton disabled onClick={nextView}>
+          <StyledDisabledButton
+            disabled
+            onClick={nextView}
+            aria-label="next section button">
             <StyledRightIcon />
           </StyledDisabledButton>
         </React.Fragment>
       ) : view === 0 ? (
         <React.Fragment>
-          <StyledDisabledButton disabled onClick={prevView}>
+          <StyledDisabledButton
+            disabled
+            onClick={prevView}
+            aria-label="previous section button">
             <StyledLeftIcon />
           </StyledDisabledButton>
-          <StyledButton onClick={nextView}>
+          <StyledButton onClick={nextView} aria-label="next section button">
             <StyledRightIcon />
           </StyledButton>
         </React.Fragment>
       ) : view === 3 ? (
         <React.Fragment>
-          <StyledButton onClick={prevView}>
+          <StyledButton onClick={prevView} aria-label="previous section button">
             <StyledLeftIcon />
           </StyledButton>
           <StyledButton onClick={nextView}>
@@ -40,17 +49,17 @@ const Footer = (props) => {
         </React.Fragment>
       ) : view === 4 ? (
         <React.Fragment>
-          <StyledButton onClick={prevView}>
+          <StyledButton onClick={prevView} aria-label="previous section button">
             <StyledLeftIcon />
           </StyledButton>{" "}
           <StyledButton onClick={resetCV}>Reset CV</StyledButton>
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <StyledButton onClick={prevView}>
+          <StyledButton onClick={prevView} aria-label="previous section button">
             <StyledLeftIcon />
           </StyledButton>
-          <StyledButton onClick={nextView}>
+          <StyledButton onClick={nextView} aria-label="next section button">
             <StyledRightIcon />
           </StyledButton>
         </React.Fragment>
