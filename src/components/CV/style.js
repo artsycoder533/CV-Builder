@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import { FiPrinter } from "react-icons/fi";
+import { StyledButton } from "../Button/style";
 
 export const Container = styled.div`
-  /* position: fixed;
-  top: 75px; */
   width: 100%;
-  height: calc(100vh - 175px - 120px);
-  height: 100%;
   padding: 3rem;
   font-size: 1rem;
-  /* overflow-y: scroll; */
 `;
 
 export const StyledTitle = styled.h1`
@@ -32,7 +28,6 @@ export const HeaderSection = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-bottom: 1rem;
-  /* text-align: center; */
 `;
 
 export const List = styled.ul`
@@ -51,7 +46,6 @@ export const JobTitle = styled.h3`
 export const JobDate = styled.div`
   display: flex;
   justify-content: space-between;
-  /* padding-bottom: 1rem; */
 `;
 
 export const Description = styled.p`
@@ -61,4 +55,16 @@ export const Description = styled.p`
 export const StyledPrintIcon = styled(FiPrinter)`
   font-size: 1.5rem;
   font-weight: bold;
+`;
+
+export const PrintButton = styled(StyledButton)`
+  position: absolute;
+  background: red;
+  left: 0;
+  padding: 0.7rem;
+`;
+
+export const Wrapper = styled.div`
+  overflow-y: scroll;
+  height: calc(100vh - 75px);
 `;

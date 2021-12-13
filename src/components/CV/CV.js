@@ -16,10 +16,10 @@ import {
   List,
   JobTitle,
   Description,
-  StyledHeader,
   StyledPrintIcon,
+  PrintButton,
+  Wrapper
 } from "./style";
-import { StyledButton } from "../Button/style";
 import uniqid from 'uniqid';
 
 const CV = (props) => {
@@ -30,11 +30,11 @@ const CV = (props) => {
     const { general, education, experience, skills } = props;
   const { name, email, phone, portfolio, linkedIn, github } = general[0];
   return (
-    <React.Fragment>
-      <StyledButton onClick={handlePrint} className="print__button">
+    <Wrapper>
+      <PrintButton onClick={handlePrint} className="print__button">
         {" "}
         Print <StyledPrintIcon/>{" "}
-      </StyledButton>
+      </PrintButton>
       <Container ref={componentRef} className="cv">
         <StyledTitle>{name}</StyledTitle>
         <br />
@@ -57,9 +57,7 @@ const CV = (props) => {
           </span>
         </HeaderSection>
         <div className="experience">
-          {/* <hr /> */}
           <StyledSectionTitle>Experience</StyledSectionTitle>
-          {/* <hr /> */}
 
           {experience.map((exp) => {
             const { title, company, startDate, endDate, employed, duties, id } =
@@ -86,9 +84,7 @@ const CV = (props) => {
           })}
         </div>
         <div className="education">
-          {/* <hr /> */}
           <StyledSectionTitle>Education</StyledSectionTitle>
-          {/* <hr /> */}
           {education.map((ed) => {
             const {
               school,
@@ -154,7 +150,7 @@ const CV = (props) => {
           </List>
         </div>
       </Container>
-    </React.Fragment>
+    </Wrapper>
   );
 };
 export default CV;
