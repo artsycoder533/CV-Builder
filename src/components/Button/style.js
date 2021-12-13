@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { FiTrash2, FiPrinter, FiSave } from "react-icons/fi";
+import { FiTrash2, FiSave } from "react-icons/fi";
 
 export const StyledButton = styled.button`
-  /* width: 10rem; */
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -10,7 +9,6 @@ export const StyledButton = styled.button`
   gap: 1rem;
   font-size: 1.1rem;
   font-weight: bold;
-  /* border-radius: 10px; */
   border: none;
   background: blue;
   color: white;
@@ -46,8 +44,6 @@ export const StyledTrashIcon = styled(FiTrash2)`
 
 export const AbsoluteIconButton = styled(StyledButton)`
   position: absolute;
-  /* right: 15px;
-  top: 35px; */
   bottom: 0;
   right: 10px;
   border-radius: 50%;
@@ -95,7 +91,7 @@ export const SaveButton = styled(StyledButton)`
   background: red;
   color: white;
   position: absolute;
-  right: 60px; 
+  right: 60px;
   padding: 0.5rem;
 `;
 
@@ -111,4 +107,4 @@ export const StyledDisabledButton = styled(StyledButton)`
   &:hover {
     opacity: 1;
   }
-  `;
+`;
