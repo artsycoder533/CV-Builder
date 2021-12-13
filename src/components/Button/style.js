@@ -90,6 +90,7 @@ export const DownloadButton = styled(PlainButton)`
 export const SaveButton = styled(StyledButton)`
   background: red;
   color: white;
+  font-weight: bold;
   position: absolute;
   right: 60px;
   padding: 0.5rem;
@@ -98,6 +99,8 @@ export const SaveButton = styled(StyledButton)`
 export const StyledSaveIcon = styled(FiSave)`
   font-size: 1.5rem;
   font-weight: bold;
+  color: white;
+  background: none;
 `;
 
 export const StyledDisabledButton = styled(StyledButton)`
