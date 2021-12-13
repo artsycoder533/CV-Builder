@@ -19,8 +19,6 @@ export const FormWrapper = styled.div`
 export const EntryWrapper = styled.div`
   display: flex;
   align-items: center;
-  /* display: grid;
-  grid-template-columns: 1fr; */
   align-items: center;
   border-radius: 10px;
   padding: 1rem;
@@ -32,9 +30,6 @@ export const EntryWrapper = styled.div`
 
 export const SkillsForm = styled.div`
   display: flex;
-  /* justify-content: center; */
-  //align-items: center;
-  /* flex-wrap: wrap; */
   gap: 2rem;
   max-width: 1400px;
   width: 90vw;
@@ -42,7 +37,6 @@ export const SkillsForm = styled.div`
   padding: 1rem;
   overflow-y: scroll;
   height: calc(100vh - 120px - 175px - 121px);
-  /* background: white; */
 `;
 
 export const StyledFormWithScroll = styled.form`
@@ -75,7 +69,6 @@ export const StyledError = styled.small`
 `;
 
 export const SaveButton2 = styled(SaveButton)`
-position: relative;
-right: 0;
-
+  position: relative;
+  right: 0;
 `;
