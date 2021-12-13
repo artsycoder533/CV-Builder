@@ -103,6 +103,7 @@ const SkillsInfoForm = (props) => {
                   </SaveButton2>
                   <AbsoluteSkillsTrashButton
                     type="button"
+                    aria-label="delete entry button"
                     onClick={() => deleteEntry(index)}>
                     <StyledTrashIcon />
                   </AbsoluteSkillsTrashButton>
@@ -113,7 +114,10 @@ const SkillsInfoForm = (props) => {
         </StyledFormWithScroll>
       </FormWrapper>
       {valid === true ? (
-        <AbsoluteIconButton type="button" onClick={() => addNewEntry()}>
+        <AbsoluteIconButton
+          type="button"
+          onClick={() => addNewEntry()}
+          aria-label="add new entry button">
           <StyledAddIcon />
         </AbsoluteIconButton>
       ) : (
