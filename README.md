@@ -10,6 +10,12 @@ The CV Builder App is a Single Page Application that allows a user to enter deta
 - React-To-Print
 - Local Storage
 
+## Screenshots
+
+![Desktop Screenshot](desktop.png)
+![Mobile Screenshot](mobile.png)
+
+
 ## Challenges I faced while building this project
 
 - **Problem**: How to handle the state of multiple inputs inside a single form?
