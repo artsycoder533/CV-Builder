@@ -1,15 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { StyledRadio, Container, RadioWrapper } from "./style";
-import uniqid from 'uniqid';
+import uniqid from "uniqid";
 
 const DisplayRadio = (props) => {
-    const [values, setValues] = useState(["Yes", "No"]);
-    
-  const {name, graduate, handleInput, index} = props;
+  const [values, setValues] = useState(["Yes", "No"]);
+
+  const { name, graduate, handleInput, index } = props;
   return (
     <Container>
       <span>Did you graduate?</span>
-          {values.map((val) => {
+      {values.map((val) => {
         return (
           <RadioWrapper key={uniqid()}>
             <StyledRadio
