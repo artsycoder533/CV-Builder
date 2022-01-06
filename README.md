@@ -61,5 +61,6 @@ To run the project:
 - Type `npm start `
     - This will run the project in development mode
 
-
+## Author
+Portfolio: [https://natashajohnson.dev/](https://natashajohnson.dev/)
 
